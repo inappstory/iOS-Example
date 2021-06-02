@@ -1,16 +1,16 @@
-##InAppStorySDK Example
+## InAppStorySDK Example
 
 This project was created in order to show the basics of integration and work with InAppStorySDK.  
 Full documentation can be found in the repository library, which can be found [here](https://github.com/inappstory/ios-sdk)
 
-###Get started
+### Get started
 To get started, you need:  
 
 - clone it from the repository to your computer;  
 - install the latest version of the library via CocoaPods by running the `pod install` command from the terminal;  
 - to specify a unique project key in `AppDelegate.swift` file, which is obtained in a private office at [https://console.inappstory.com/](https://github.com/inappstory/ios-sdk)  
 
-###Description of Examples Screens
+### Description of Examples Screens
 
 - **SimpleIntegrationController** - the minimum required for the integration for the basic work  
 - **CellCustomizationController** - basic cell settings using the SDK  
