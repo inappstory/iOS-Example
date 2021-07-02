@@ -100,7 +100,7 @@ extension UserChangeController
     }
 }
 
-extension UserChangeController: StoryViewDeleagate
+extension UserChangeController: StoryViewDelegate
 {
     // delegate method, called when the data in the StoryView is updated
     func storyViewUpdated(storyView: StoryView, widgetStories: Array<WidgetStory>?)

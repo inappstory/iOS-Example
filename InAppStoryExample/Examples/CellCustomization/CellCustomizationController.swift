@@ -81,7 +81,7 @@ extension CellCustomizationController
     }
 }
 
-extension CellCustomizationController: StoryViewDeleagate
+extension CellCustomizationController: StoryViewDelegate
 {
     // delegate method, called when the data in the StoryView is updated
     func storyViewUpdated(storyView: StoryView, widgetStories: Array<WidgetStory>?)
@@ -122,7 +122,7 @@ extension CellCustomizationController: StoryViewDeleagate
 }
 
 // methods of delegate, like in UICollectionViewDelegateFlowLayout
-extension CellCustomizationController: StoryViewDeleagateFlowLayout
+extension CellCustomizationController: StoryViewDelegateFlowLayout
 {
     func sizeForItem() -> CGSize
     {

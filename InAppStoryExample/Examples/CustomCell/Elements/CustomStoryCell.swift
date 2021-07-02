@@ -48,6 +48,12 @@ class CustomStoryCell: UICollectionViewCell
         
         if playerLayer == nil {
             player.isMuted = true
+            
+            if #available(iOS 12.0, *) {
+                // fixes "autolock" blocking due to video loop
+                player.preventsDisplaySleepDuringVideoPlayback = false
+            }
+            
             playerLayer = AVPlayerLayer(player: player)
             playerLayer.frame = videoView.frame
             playerLayer.videoGravity = .resizeAspectFill

@@ -54,7 +54,7 @@ extension FavoritesListController
     }
 }
 
-extension FavoritesListController: StoryViewDeleagate
+extension FavoritesListController: StoryViewDelegate
 {
     // delegate method, called when the data in the StoryView is updated
     func storyViewUpdated(storyView: StoryView, widgetStories: Array<WidgetStory>?)

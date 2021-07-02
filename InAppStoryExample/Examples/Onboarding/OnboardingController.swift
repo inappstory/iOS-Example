@@ -70,7 +70,7 @@ extension OnboardingController
     }
 }
 
-extension OnboardingController: StoryViewDeleagate
+extension OnboardingController: StoryViewDelegate
 {
     // delegate method, called when the data in the StoryView is updated
     func storyViewUpdated(storyView: StoryView, widgetStories: Array<WidgetStory>?)
