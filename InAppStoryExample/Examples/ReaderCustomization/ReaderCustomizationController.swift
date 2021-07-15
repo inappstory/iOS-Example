@@ -43,6 +43,9 @@ extension ReaderCustomizationController
         // placeholder color when loading game
         InAppStory.shared.gamePlaceholderTint = .lightGray
         
+        // enable gradient shadow under timers in story
+        InAppStory.shared.timerGradientEnable = false
+        
         // set new icons for buttons in the reader
         InAppStory.shared.likeImage = UIImage(named: "like")!
         InAppStory.shared.likeSelectedImage = UIImage(named: "likeSelected")!

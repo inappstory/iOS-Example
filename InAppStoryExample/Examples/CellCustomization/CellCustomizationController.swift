@@ -33,6 +33,9 @@ extension CellCustomizationController
         // setup InAppStorySDK for user with ID
         InAppStory.shared.settings = Settings(userID: "")
         
+        // quality of cover images in cells
+        InAppStory.shared.coverQuality = .high
+        
         // show title in cell
         InAppStory.shared.showCellTitle = true
         // show source title in cell (deprecated soon)
