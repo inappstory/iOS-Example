@@ -44,8 +44,6 @@ extension CellCustomizationController
         InAppStory.shared.cellBorderColor = .purple
         // cell title font
         InAppStory.shared.cellFont = UIFont.systemFont(ofSize: 12.0)
-        // cell title color
-        InAppStory.shared.cellTitleColor = .white
         // cell source title font (deprecated soon)
         InAppStory.shared.cellSourceFont = UIFont.systemFont(ofSize: 12.0)
         // cell source title color (deprecated soon)

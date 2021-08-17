@@ -88,8 +88,7 @@ extension CustomStoryCell: StoryCellProtocol
     // image url for cover
     func setImageURL(_ url: URL) {
         imageView.image = nil
-        imageView.tag = Int(Date().timeIntervalSince1970)
-        
+        imageView.tag = Int(String("\(Int(Date().timeIntervalSince1970 * 1000000))".dropFirst(8)))!
         imageView.downloadedFrom(url: url, contentMode: .scaleAspectFill, withViewTag: imageView.tag)
     }
     

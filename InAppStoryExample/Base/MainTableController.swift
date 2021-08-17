@@ -125,7 +125,6 @@ extension MainTableController
         InAppStory.shared.cellBorderColor = .purple
         
         InAppStory.shared.cellFont = UIFont.systemFont(ofSize: 12.0)
-        InAppStory.shared.cellTitleColor = .white
         
         InAppStory.shared.cellSourceFont = UIFont.systemFont(ofSize: 12.0)
         InAppStory.shared.cellSourceTitleColor = .black
