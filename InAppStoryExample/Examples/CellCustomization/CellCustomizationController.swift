@@ -38,16 +38,11 @@ extension CellCustomizationController
         
         // show title in cell
         InAppStory.shared.showCellTitle = true
-        // show source title in cell (deprecated soon)
-        InAppStory.shared.showCellSource = false
+    
         // color of cell border
         InAppStory.shared.cellBorderColor = .purple
         // cell title font
         InAppStory.shared.cellFont = UIFont.systemFont(ofSize: 12.0)
-        // cell source title font (deprecated soon)
-        InAppStory.shared.cellSourceFont = UIFont.systemFont(ofSize: 12.0)
-        // cell source title color (deprecated soon)
-        InAppStory.shared.cellSourceTitleColor = .black
     }
     
     fileprivate func setupStoryView()

@@ -120,14 +120,10 @@ extension MainTableController
     fileprivate func resetInAppStory()
     {
         InAppStory.shared.showCellTitle = true
-        InAppStory.shared.showCellSource = false
         
         InAppStory.shared.cellBorderColor = .purple
         
         InAppStory.shared.cellFont = UIFont.systemFont(ofSize: 12.0)
-        
-        InAppStory.shared.cellSourceFont = UIFont.systemFont(ofSize: 12.0)
-        InAppStory.shared.cellSourceTitleColor = .black
 
         InAppStory.shared.swipeToClose = true
         InAppStory.shared.overScrollToClose = true

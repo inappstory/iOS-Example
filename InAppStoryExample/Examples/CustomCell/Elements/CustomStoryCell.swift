@@ -27,7 +27,6 @@ class CustomStoryCell: UICollectionViewCell
     @IBOutlet weak var videoView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var sourceHeight: NSLayoutConstraint!
     
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -81,9 +80,6 @@ extension CustomStoryCell: StoryCellProtocol
     func setTitle(_ text: String) {
         titleLabel.text = text
     }
-    
-    // source title of cell (deprecated soon)
-    func setSource(_ text: String) {}
     
     // image url for cover
     func setImageURL(_ url: URL) {
