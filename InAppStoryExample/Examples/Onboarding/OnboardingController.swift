@@ -28,7 +28,7 @@ class OnboardingController: UIViewController
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         // show onboarding reader with completion
-        InAppStory.shared.showOnboarding(from: self, delegate: self) {}
+        InAppStory.shared.showOnboardings(from: self, delegate: self) {}
     }
 }
 
@@ -48,7 +48,7 @@ extension OnboardingController
         // adding a point from where the reader will be shown
         storyView.target = self
         // set StoryView delegate
-        storyView.delegate = self
+        storyView.storiesDelegate = self
         
         self.view.addSubview(storyView)
         
@@ -70,35 +70,62 @@ extension OnboardingController
     }
 }
 
-extension OnboardingController: StoryViewDelegate
+extension OnboardingController: InAppStoryDelegate
 {
-    // delegate method, called when the data in the StoryView is updated
-    func storyViewUpdated(storyView: StoryView, widgetStories: Array<WidgetStory>?)
+    // delegate method, called when the data is updated
+    func storiesDidUpdated(isContent: Bool, from storyType: StoriesType)
     {
         if storyView.isContent {
-            print("StoryView has content")
+            switch storyType {
+            case .list:
+                print("StoryView has content")
+            case .single:
+                print("SingleStory has content")
+            case .onboarding:
+                print("Onboarding has content")
+            default:
+                break
+            }
         } else {
             print("No content")
         }
     }
+    
     // delegate method, called when a button or SwipeUp event is triggered in the reader
-    func storyView(_ storyView: StoryView, actionWith type: ActionType, for target: String)
-    {
+    func storyReader(actionWith target: String, for type: ActionType, from storyType: StoriesType) {
         if let url = URL(string: target) {
             UIApplication.shared.open(url)
         }
     }
     
     // delegate method, called when the reader will show
-    func storyReaderWillShow()
+    func storyReaderWillShow(with storyType: StoriesType)
     {
-        print("StoryView reader will show")
+        switch storyType {
+        case .list:
+            print("StoryView reader will show")
+        case .single:
+            print("SingleStory reader will show")
+        case .onboarding:
+            print("Onboarding reader will show")
+        default:
+            break
+        }
     }
     
     // delegate method, called when the reader did close
-    func storyReaderDidClose()
+    func storyReaderDidClose(with storyType: StoriesType)
     {
-        print("StoryView reader did close")
+        switch storyType {
+        case .list:
+            print("StoryView reader did close")
+        case .single:
+            print("SingleStory reader did close")
+        case .onboarding:
+            print("Onboarding reader did close")
+        default:
+            break
+        }
     }
     
     // delegate method, called when the favorite cell has been selected
@@ -107,38 +134,5 @@ extension OnboardingController: StoryViewDelegate
         // InAppStory.shared.favoritePanel is false, favorites cell is not displayed
         // method called only the method is called only when the favorite cell is selected
         // see FavoritesController.swift
-    }
-}
-
-extension OnboardingController: OnboardingDelegate
-{
-    // delegate method, called when the data in the Onboarding is updated
-    func onboardingUpdated(isContent: Bool)
-    {
-        if isContent {
-            print("StoryView has content")
-        } else {
-            print("No content")
-        }
-    }
-    
-    // delegate method, called when a button or SwipeUp event is triggered in the reader
-    func onboardingReader(actionWith target: String, for type: ActionType)
-    {
-        if let url = URL(string: target) {
-            UIApplication.shared.open(url)
-        }
-    }
-    
-    // delegate method, called when the reader will show
-    func onboardingReaderWillShow()
-    {
-        print("StoryView reader will show")
-    }
-    
-    // delegate method, called when the reader did close
-    func onboardingReaderDidClose()
-    {
-        print("StoryView reader did close")
     }
 }

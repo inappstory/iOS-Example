@@ -31,7 +31,6 @@
 /* Begin PBXFileReference section */
 		1A23710926FA87641AC599CD /* Pods_InAppStoryExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InAppStoryExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D7674EDD0196273DA5F1677 /* Pods-InAppStoryExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InAppStoryExample.debug.xcconfig"; path = "Target Support Files/Pods-InAppStoryExample/Pods-InAppStoryExample.debug.xcconfig"; sourceTree = "<group>"; };
-		31023A02268F39E500CF6FF6 /* InAppStorySDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = InAppStorySDK.xcframework; path = ../../../Desktop/InAppStorySDK.xcframework; sourceTree = "<group>"; };
 		3196F74E2660DE9000E0DC1A /* InAppStoryExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InAppStoryExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3196F7512660DE9000E0DC1A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3196F75A2660DE9000E0DC1A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -226,7 +225,6 @@
 		6C94598CE892B759A03EEE36 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				31023A02268F39E500CF6FF6 /* InAppStorySDK.xcframework */,
 				1A23710926FA87641AC599CD /* Pods_InAppStoryExample.framework */,
 			);
 			name = Frameworks;

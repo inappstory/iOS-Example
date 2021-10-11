@@ -58,39 +58,66 @@ extension SingleStoryController
     @objc func buttonAction(sender: UIButton!)
     {
         // show singlel story reader with completion
-        InAppStory.shared.showSingleStory(with: "", from: self, delegate: self) {}
+        InAppStory.shared.showSingle(with: "", from: self, delegate: self) {}
     }
 }
 
-extension SingleStoryController: SingleStoryDelegate
+extension SingleStoryController: InAppStoryDelegate
 {
-    // delegate method, called when the data in the single story is updated
-    func singleStoryUpdated(isContent: Bool)
+    // delegate method, called when the data is updated
+    func storiesDidUpdated(isContent: Bool, from storyType: StoriesType)
     {
-        if isContent {
-            print("StoryView has content")
+        if storyView.isContent {
+            switch storyType {
+            case .list:
+                print("StoryView has content")
+            case .single:
+                print("SingleStory has content")
+            case .onboarding:
+                print("Onboarding has content")
+            default:
+                break
+            }
         } else {
             print("No content")
         }
     }
     
     // delegate method, called when a button or SwipeUp event is triggered in the reader
-    func singleStory(actionWith target: String, for type: ActionType)
-    {
+    func storyReader(actionWith target: String, for type: ActionType, from storyType: StoriesType) {
         if let url = URL(string: target) {
             UIApplication.shared.open(url)
         }
     }
     
     // delegate method, called when the reader will show
-    func singleStoryReaderWillShow()
+    func storyReaderWillShow(with storyType: StoriesType)
     {
-        print("StoryView reader will show")
+        switch storyType {
+        case .list:
+            print("StoryView reader will show")
+        case .single:
+            print("SingleStory reader will show")
+        case .onboarding:
+            print("Onboarding reader will show")
+        default:
+            break
+        }
     }
     
     // delegate method, called when the reader did close
-    func singleStoryReaderDidClose()
+    func storyReaderDidClose(with storyType: StoriesType)
     {
-        print("StoryView reader did close")
+        switch storyType {
+        case .list:
+            print("StoryView reader did close")
+        case .single:
+            print("SingleStory reader did close")
+        case .onboarding:
+            print("Onboarding reader did close")
+        default:
+            break
+        }
     }
 }
+
