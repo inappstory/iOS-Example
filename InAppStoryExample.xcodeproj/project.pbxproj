@@ -3,10 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		311B26992729428F00C25FB4 /* SimpleGoodsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311B26982729428F00C25FB4 /* SimpleGoodsController.swift */; };
+		311B269C2729431100C25FB4 /* CustomGoodsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311B269A2729431100C25FB4 /* CustomGoodsController.swift */; };
+		311B269D2729431100C25FB4 /* CustomCellGoodsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311B269B2729431100C25FB4 /* CustomCellGoodsController.swift */; };
+		311B26A5272947E600C25FB4 /* CustomGoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311B26A3272947E600C25FB4 /* CustomGoodCell.swift */; };
+		311B26A6272947E600C25FB4 /* CustomGoodCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 311B26A4272947E600C25FB4 /* CustomGoodCell.xib */; };
+		311B26A827294AB100C25FB4 /* GoodsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311B26A727294AB100C25FB4 /* GoodsView.swift */; };
 		3196F7522660DE9000E0DC1A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3196F7512660DE9000E0DC1A /* AppDelegate.swift */; };
 		3196F75B2660DE9000E0DC1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3196F75A2660DE9000E0DC1A /* Assets.xcassets */; };
 		3196F75E2660DE9000E0DC1A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3196F75C2660DE9000E0DC1A /* LaunchScreen.storyboard */; };
@@ -31,6 +37,13 @@
 /* Begin PBXFileReference section */
 		1A23710926FA87641AC599CD /* Pods_InAppStoryExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InAppStoryExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D7674EDD0196273DA5F1677 /* Pods-InAppStoryExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InAppStoryExample.debug.xcconfig"; path = "Target Support Files/Pods-InAppStoryExample/Pods-InAppStoryExample.debug.xcconfig"; sourceTree = "<group>"; };
+		311B2693272940EB00C25FB4 /* InAppStorySDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = InAppStorySDK.xcframework; path = ../../../Desktop/InAppStorySDK.xcframework; sourceTree = "<group>"; };
+		311B26982729428F00C25FB4 /* SimpleGoodsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleGoodsController.swift; sourceTree = "<group>"; };
+		311B269A2729431100C25FB4 /* CustomGoodsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomGoodsController.swift; sourceTree = "<group>"; };
+		311B269B2729431100C25FB4 /* CustomCellGoodsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCellGoodsController.swift; sourceTree = "<group>"; };
+		311B26A3272947E600C25FB4 /* CustomGoodCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomGoodCell.swift; sourceTree = "<group>"; };
+		311B26A4272947E600C25FB4 /* CustomGoodCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomGoodCell.xib; sourceTree = "<group>"; };
+		311B26A727294AB100C25FB4 /* GoodsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoodsView.swift; sourceTree = "<group>"; };
 		3196F74E2660DE9000E0DC1A /* InAppStoryExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InAppStoryExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3196F7512660DE9000E0DC1A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3196F75A2660DE9000E0DC1A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -66,6 +79,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		311B26972729426700C25FB4 /* GoodsWidget */ = {
+			isa = PBXGroup;
+			children = (
+				311B26982729428F00C25FB4 /* SimpleGoodsController.swift */,
+				311B269B2729431100C25FB4 /* CustomCellGoodsController.swift */,
+				311B269A2729431100C25FB4 /* CustomGoodsController.swift */,
+				311B269E2729471D00C25FB4 /* Elements */,
+			);
+			path = GoodsWidget;
+			sourceTree = "<group>";
+		};
+		311B269E2729471D00C25FB4 /* Elements */ = {
+			isa = PBXGroup;
+			children = (
+				311B26A727294AB100C25FB4 /* GoodsView.swift */,
+				311B26A3272947E600C25FB4 /* CustomGoodCell.swift */,
+				311B26A4272947E600C25FB4 /* CustomGoodCell.xib */,
+			);
+			path = Elements;
+			sourceTree = "<group>";
+		};
 		3196F7452660DE9000E0DC1A = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +162,7 @@
 				31D5FAAD2665118300CC8BA5 /* UserChange */,
 				31D5FAB32665118300CC8BA5 /* TagsPlaceholders */,
 				31D5FAAE2665118300CC8BA5 /* Notification */,
+				311B26972729426700C25FB4 /* GoodsWidget */,
 			);
 			path = Examples;
 			sourceTree = "<group>";
@@ -225,6 +260,7 @@
 		6C94598CE892B759A03EEE36 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				311B2693272940EB00C25FB4 /* InAppStorySDK.xcframework */,
 				1A23710926FA87641AC599CD /* Pods_InAppStoryExample.framework */,
 			);
 			name = Frameworks;
@@ -250,7 +286,6 @@
 				3196F74A2660DE9000E0DC1A /* Sources */,
 				3196F74B2660DE9000E0DC1A /* Frameworks */,
 				3196F74C2660DE9000E0DC1A /* Resources */,
-				701BDC9BF19E431F0E881402 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -301,29 +336,13 @@
 				3196F75E2660DE9000E0DC1A /* LaunchScreen.storyboard in Resources */,
 				319B6BD92667778A00589B27 /* CustomStoryCell.xib in Resources */,
 				3196F75B2660DE9000E0DC1A /* Assets.xcassets in Resources */,
+				311B26A6272947E600C25FB4 /* CustomGoodCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		701BDC9BF19E431F0E881402 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-InAppStoryExample/Pods-InAppStoryExample-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-InAppStoryExample/Pods-InAppStoryExample-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-InAppStoryExample/Pods-InAppStoryExample-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		9E2CA887AF3FB9E669137CBE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -353,7 +372,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				311B269C2729431100C25FB4 /* CustomGoodsController.swift in Sources */,
+				311B26992729428F00C25FB4 /* SimpleGoodsController.swift in Sources */,
 				3196F7522660DE9000E0DC1A /* AppDelegate.swift in Sources */,
+				311B269D2729431100C25FB4 /* CustomCellGoodsController.swift in Sources */,
 				31D5FAB9266512C800CC8BA5 /* MainTableController.swift in Sources */,
 				31BFD9592666562300548EE9 /* UserChangeController.swift in Sources */,
 				31BFD94F266655C800548EE9 /* CustomCellController.swift in Sources */,
@@ -366,6 +388,8 @@
 				31D5FABD266523B700CC8BA5 /* CellCustomizationController.swift in Sources */,
 				319B6BDE2667781500589B27 /* UIImageView+CS.swift in Sources */,
 				319B6BE22667BFA900589B27 /* NotificationsController.swift in Sources */,
+				311B26A5272947E600C25FB4 /* CustomGoodCell.swift in Sources */,
+				311B26A827294AB100C25FB4 /* GoodsView.swift in Sources */,
 				31BFD951266655DE00548EE9 /* FavoritesController.swift in Sources */,
 				31BFD9572666561400548EE9 /* SingleStoryController.swift in Sources */,
 			);

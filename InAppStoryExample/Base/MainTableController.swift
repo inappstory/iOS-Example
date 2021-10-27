@@ -17,7 +17,10 @@ class MainTableController: UITableViewController {
                     "Single Story",
                     "User Change",
                     "Tags & Placeholders",
-                    "Notifications"]
+                    "Notifications",
+                    "Simple GoodsWidget",
+                    "Custom Cell GoodsWidget",
+                    "Custom GoodsWidget"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,6 +105,9 @@ extension MainTableController
             break
         case 9:
             showExample(with: NotificationsController())
+            break
+        case 10:
+            showExample(with: SimpleGoodsController())
             break
         default:
             break

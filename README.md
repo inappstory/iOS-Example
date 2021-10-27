@@ -22,3 +22,6 @@ To get started, you need:
 - **UserChangeController** - change user in SDK
 - **TagsPlaceholdersController** - work with placeholders and tags
 - **NotificationsController** - tracking basic notifications from SDK
+- **SimpleGoodsController** - simple GoodsWidget integration
+- **CustomCellGoodsController** - custom GoodsWidget cell
+- **CustomGoodsController** - custom GoodsWidget view

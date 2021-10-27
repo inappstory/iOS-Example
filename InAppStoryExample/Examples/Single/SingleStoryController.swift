@@ -65,9 +65,13 @@ extension SingleStoryController
 extension SingleStoryController: InAppStoryDelegate
 {
     // delegate method, called when the data is updated
-    func storiesDidUpdated(isContent: Bool, from storyType: StoriesType)
+    func storiesDidUpdated(isContent: Bool, from storyType: StoriesType, storyView: StoryView?)
     {
-        if storyView.isContent {
+        guard let currentStoryView = storyView else {
+            return
+        }
+        
+        if currentStoryView.isContent {
             switch storyType {
             case .list:
                 print("StoryView has content")
@@ -84,14 +88,14 @@ extension SingleStoryController: InAppStoryDelegate
     }
     
     // delegate method, called when a button or SwipeUp event is triggered in the reader
-    func storyReader(actionWith target: String, for type: ActionType, from storyType: StoriesType) {
+    func storyReader(actionWith target: String, for type: ActionType, from storyType: StoriesType, storyView: StoryView?) {
         if let url = URL(string: target) {
             UIApplication.shared.open(url)
         }
     }
     
     // delegate method, called when the reader will show
-    func storyReaderWillShow(with storyType: StoriesType)
+    func storyReaderWillShow(with storyType: StoriesType, storyView: StoryView?)
     {
         switch storyType {
         case .list:
@@ -106,7 +110,7 @@ extension SingleStoryController: InAppStoryDelegate
     }
     
     // delegate method, called when the reader did close
-    func storyReaderDidClose(with storyType: StoriesType)
+    func storyReaderDidClose(with storyType: StoriesType, storyView: StoryView?)
     {
         switch storyType {
         case .list:
