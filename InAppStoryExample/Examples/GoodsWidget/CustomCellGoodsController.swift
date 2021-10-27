@@ -28,6 +28,11 @@ class CustomCellGoodsController: UIViewController
 
         setupStoryView()
     }
+    
+    deinit {
+        InAppStory.shared.goodCell = nil
+        InAppStory.shared.goodsDelegateFlowLayout = nil
+    }
 }
 
 extension CustomCellGoodsController

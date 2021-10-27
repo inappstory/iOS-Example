@@ -24,6 +24,10 @@ class CustomGoodsController: UIViewController
 
         setupStoryView()
     }
+    
+    deinit {
+        InAppStory.shared.goodsView = nil
+    }
 }
 
 extension CustomGoodsController
@@ -32,6 +36,9 @@ extension CustomGoodsController
     {
         // setup InAppStorySDK for user with ID
         InAppStory.shared.settings = Settings(userID: "")
+        
+        // set custom GoodsWidget view
+        InAppStory.shared.goodsView = GoodsView()
     }
     
     fileprivate func setupStoryView()
