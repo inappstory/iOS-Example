@@ -37,10 +37,8 @@ class CustomGoodCell: UICollectionViewCell {
 
 extension CustomGoodCell: GoodsCellProtocol
 {
-    func setGoodObject(_ object: Any!)
+    func setGoodObject(_ object: GoodsObjectProtocol!)
     {
-        if let sku = object as? String {
-            titleLabel.text = sku
-        }
+        titleLabel.text = object.sku
     }
 }
