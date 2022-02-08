@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,8 @@
 		3196F7522660DE9000E0DC1A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3196F7512660DE9000E0DC1A /* AppDelegate.swift */; };
 		3196F75B2660DE9000E0DC1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3196F75A2660DE9000E0DC1A /* Assets.xcassets */; };
 		3196F75E2660DE9000E0DC1A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3196F75C2660DE9000E0DC1A /* LaunchScreen.storyboard */; };
+		3197A30227B277D3004DE6D4 /* FramedStoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3197A30127B277D3004DE6D4 /* FramedStoryCell.swift */; };
+		3197A30427B278D1004DE6D4 /* FramedStoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3197A30327B278D1004DE6D4 /* FramedStoryCell.xib */; };
 		319B6BD92667778A00589B27 /* CustomStoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 319B6BD52667778A00589B27 /* CustomStoryCell.xib */; };
 		319B6BDB2667778A00589B27 /* CustomStoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319B6BD72667778A00589B27 /* CustomStoryCell.swift */; };
 		319B6BDE2667781500589B27 /* UIImageView+CS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319B6BDD2667781500589B27 /* UIImageView+CS.swift */; };
@@ -49,6 +51,8 @@
 		3196F75A2660DE9000E0DC1A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3196F75D2660DE9000E0DC1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3196F75F2660DE9000E0DC1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3197A30127B277D3004DE6D4 /* FramedStoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FramedStoryCell.swift; sourceTree = "<group>"; };
+		3197A30327B278D1004DE6D4 /* FramedStoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FramedStoryCell.xib; sourceTree = "<group>"; };
 		319B6BD52667778A00589B27 /* CustomStoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomStoryCell.xib; sourceTree = "<group>"; };
 		319B6BD72667778A00589B27 /* CustomStoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomStoryCell.swift; sourceTree = "<group>"; };
 		319B6BDD2667781500589B27 /* UIImageView+CS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+CS.swift"; sourceTree = "<group>"; };
@@ -137,6 +141,8 @@
 			children = (
 				319B6BD72667778A00589B27 /* CustomStoryCell.swift */,
 				319B6BD52667778A00589B27 /* CustomStoryCell.xib */,
+				3197A30127B277D3004DE6D4 /* FramedStoryCell.swift */,
+				3197A30327B278D1004DE6D4 /* FramedStoryCell.xib */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -338,6 +344,7 @@
 				319B6BD92667778A00589B27 /* CustomStoryCell.xib in Resources */,
 				3196F75B2660DE9000E0DC1A /* Assets.xcassets in Resources */,
 				311B26A6272947E600C25FB4 /* CustomGoodCell.xib in Resources */,
+				3197A30427B278D1004DE6D4 /* FramedStoryCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,6 +412,7 @@
 				31BFD95B2666563200548EE9 /* TagsPlaceholdersController.swift in Sources */,
 				31D5FABD266523B700CC8BA5 /* CellCustomizationController.swift in Sources */,
 				319B6BDE2667781500589B27 /* UIImageView+CS.swift in Sources */,
+				3197A30227B277D3004DE6D4 /* FramedStoryCell.swift in Sources */,
 				319B6BE22667BFA900589B27 /* NotificationsController.swift in Sources */,
 				311B26A5272947E600C25FB4 /* CustomGoodCell.swift in Sources */,
 				311B26A827294AB100C25FB4 /* GoodsView.swift in Sources */,

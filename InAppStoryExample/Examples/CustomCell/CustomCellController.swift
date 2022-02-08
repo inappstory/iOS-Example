@@ -47,7 +47,7 @@ extension CustomCellController
         storyView.deleagateFlowLayout = self
         
         // set custom cell
-        storyView.storyCell = CustomStoryCell()
+        storyView.storyCell = CustomStoryCell()// or create FramedStoryCell()
         
         self.view.addSubview(storyView)
         
