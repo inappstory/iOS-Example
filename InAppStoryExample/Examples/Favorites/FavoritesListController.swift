@@ -80,6 +80,7 @@ extension FavoritesListController: InAppStoryDelegate
     }
     
     // delegate method, called when a button or SwipeUp event is triggered in the reader
+    // types is .button, .game, .deeplink, .swipe
     func storyReader(actionWith target: String, for type: ActionType, from storyType: StoriesType) {
         if let url = URL(string: target) {
             UIApplication.shared.open(url)

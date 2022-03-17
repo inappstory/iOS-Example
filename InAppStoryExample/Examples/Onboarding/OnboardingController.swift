@@ -28,7 +28,9 @@ class OnboardingController: UIViewController
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         // show onboarding reader with completion
-        InAppStory.shared.showOnboardings(from: self, delegate: self) {}
+        InAppStory.shared.showOnboardings(from: self, delegate: self) { show in
+            print("Story reader \(show ? "is" : "not") showing")
+        }
     }
 }
 
@@ -96,6 +98,7 @@ extension OnboardingController: InAppStoryDelegate
     }
     
     // delegate method, called when a button or SwipeUp event is triggered in the reader
+    // types is .button, .game, .deeplink, .swipe
     func storyReader(actionWith target: String, for type: ActionType, from storyType: StoriesType) {
         if let url = URL(string: target) {
             UIApplication.shared.open(url)

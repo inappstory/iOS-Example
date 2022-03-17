@@ -58,7 +58,9 @@ extension SingleStoryController
     @objc func buttonAction(sender: UIButton!)
     {
         // show singlel story reader with completion
-        InAppStory.shared.showSingle(with: "", from: self, delegate: self) {}
+        InAppStory.shared.showSingle(with: "", from: self, delegate: self) { show in
+            print("Story reader \(show ? "is" : "not") showing")
+        }
     }
 }
 
@@ -88,6 +90,7 @@ extension SingleStoryController: InAppStoryDelegate
     }
     
     // delegate method, called when a button or SwipeUp event is triggered in the reader
+    // types is .button, .game, .deeplink, .swipe
     func storyReader(actionWith target: String, for type: ActionType, from storyType: StoriesType) {
         if let url = URL(string: target) {
             UIApplication.shared.open(url)
