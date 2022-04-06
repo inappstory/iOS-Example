@@ -25,3 +25,5 @@ To get started, you need:
 - **SimpleGoodsController** - simple GoodsWidget integration
 - **CustomCellGoodsController** - custom GoodsWidget cell
 - **CustomGoodsController** - custom GoodsWidget view
+- **MultifeedController** - Multi-feed usage example
+- **MultifeedOnboardingController** - example for onboarding with multi-feed
