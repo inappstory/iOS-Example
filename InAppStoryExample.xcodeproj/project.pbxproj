@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -30,6 +30,8 @@
 		31BFD9572666561400548EE9 /* SingleStoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BFD9562666561400548EE9 /* SingleStoryController.swift */; };
 		31BFD9592666562300548EE9 /* UserChangeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BFD9582666562300548EE9 /* UserChangeController.swift */; };
 		31BFD95B2666563200548EE9 /* TagsPlaceholdersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BFD95A2666563200548EE9 /* TagsPlaceholdersController.swift */; };
+		31C08FA427FDBB9200D91DC8 /* MultifeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C08FA327FDBB9200D91DC8 /* MultifeedController.swift */; };
+		31C08FA627FDC63D00D91DC8 /* MultifeedOnboardingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C08FA527FDC63D00D91DC8 /* MultifeedOnboardingController.swift */; };
 		31D5FAB9266512C800CC8BA5 /* MainTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D5FAB8266512C800CC8BA5 /* MainTableController.swift */; };
 		31D5FABB26651CA500CC8BA5 /* SimpleIntegrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D5FABA26651CA500CC8BA5 /* SimpleIntegrationController.swift */; };
 		31D5FABD266523B700CC8BA5 /* CellCustomizationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D5FABC266523B700CC8BA5 /* CellCustomizationController.swift */; };
@@ -65,6 +67,9 @@
 		31BFD9562666561400548EE9 /* SingleStoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleStoryController.swift; sourceTree = "<group>"; };
 		31BFD9582666562300548EE9 /* UserChangeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserChangeController.swift; sourceTree = "<group>"; };
 		31BFD95A2666563200548EE9 /* TagsPlaceholdersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsPlaceholdersController.swift; sourceTree = "<group>"; };
+		31C08F9E27FDB50100D91DC8 /* InAppStorySDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = InAppStorySDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		31C08FA327FDBB9200D91DC8 /* MultifeedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultifeedController.swift; sourceTree = "<group>"; };
+		31C08FA527FDC63D00D91DC8 /* MultifeedOnboardingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultifeedOnboardingController.swift; sourceTree = "<group>"; };
 		31D5FAB8266512C800CC8BA5 /* MainTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableController.swift; sourceTree = "<group>"; };
 		31D5FABA26651CA500CC8BA5 /* SimpleIntegrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleIntegrationController.swift; sourceTree = "<group>"; };
 		31D5FABC266523B700CC8BA5 /* CellCustomizationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellCustomizationController.swift; sourceTree = "<group>"; };
@@ -155,6 +160,15 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		31C08FA227FDB6DA00D91DC8 /* Multifeed */ = {
+			isa = PBXGroup;
+			children = (
+				31C08FA327FDBB9200D91DC8 /* MultifeedController.swift */,
+				31C08FA527FDC63D00D91DC8 /* MultifeedOnboardingController.swift */,
+			);
+			path = Multifeed;
+			sourceTree = "<group>";
+		};
 		31D5FAAC2665118300CC8BA5 /* Examples */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +183,7 @@
 				31D5FAB32665118300CC8BA5 /* TagsPlaceholders */,
 				31D5FAAE2665118300CC8BA5 /* Notification */,
 				311B26972729426700C25FB4 /* GoodsWidget */,
+				31C08FA227FDB6DA00D91DC8 /* Multifeed */,
 			);
 			path = Examples;
 			sourceTree = "<group>";
@@ -266,6 +281,7 @@
 		6C94598CE892B759A03EEE36 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				31C08F9E27FDB50100D91DC8 /* InAppStorySDK.framework */,
 				311B2693272940EB00C25FB4 /* InAppStorySDK.xcframework */,
 				1A23710926FA87641AC599CD /* Pods_InAppStoryExample.framework */,
 			);
@@ -292,7 +308,7 @@
 				3196F74A2660DE9000E0DC1A /* Sources */,
 				3196F74B2660DE9000E0DC1A /* Frameworks */,
 				3196F74C2660DE9000E0DC1A /* Resources */,
-				FEBFDD035E495B5B2D971073 /* [CP] Embed Pods Frameworks */,
+				CC6025A86FA3E35BB4234731 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -373,7 +389,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FEBFDD035E495B5B2D971073 /* [CP] Embed Pods Frameworks */ = {
+		CC6025A86FA3E35BB4234731 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -398,6 +414,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				311B269C2729431100C25FB4 /* CustomGoodsController.swift in Sources */,
+				31C08FA427FDBB9200D91DC8 /* MultifeedController.swift in Sources */,
 				311B26992729428F00C25FB4 /* SimpleGoodsController.swift in Sources */,
 				3196F7522660DE9000E0DC1A /* AppDelegate.swift in Sources */,
 				311B269D2729431100C25FB4 /* CustomCellGoodsController.swift in Sources */,
@@ -407,6 +424,7 @@
 				319B6BDB2667778A00589B27 /* CustomStoryCell.swift in Sources */,
 				319B6BE026677DBD00589B27 /* FavoritesListController.swift in Sources */,
 				31BFD953266655F800548EE9 /* ReaderCustomizationController.swift in Sources */,
+				31C08FA627FDC63D00D91DC8 /* MultifeedOnboardingController.swift in Sources */,
 				31BFD9552666560600548EE9 /* OnboardingController.swift in Sources */,
 				31D5FABB26651CA500CC8BA5 /* SimpleIntegrationController.swift in Sources */,
 				31BFD95B2666563200548EE9 /* TagsPlaceholdersController.swift in Sources */,

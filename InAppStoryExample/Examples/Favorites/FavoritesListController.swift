@@ -71,8 +71,6 @@ extension FavoritesListController: InAppStoryDelegate
                 print("SingleStory has content")
             case .onboarding:
                 print("Onboarding has content")
-            default:
-                break
             }
         } else {
             print("No content")
@@ -97,8 +95,6 @@ extension FavoritesListController: InAppStoryDelegate
             print("SingleStory reader will show")
         case .onboarding:
             print("Onboarding reader will show")
-        default:
-            break
         }
     }
     
@@ -112,8 +108,6 @@ extension FavoritesListController: InAppStoryDelegate
             print("SingleStory reader did close")
         case .onboarding:
             print("Onboarding reader did close")
-        default:
-            break
         }
     }
 }

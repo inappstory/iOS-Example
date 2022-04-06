@@ -1,14 +1,14 @@
 //
-//  FavoritesController.swift
+//  MultifeedOnboardingController.swift
 //  InAppStoryExample
 //
-//  For more information see: https://github.com/inappstory/ios-sdk/blob/main/Samples/Favorites.md
+//  For more information see: https://github.com/inappstory/ios-sdk/blob/main/Samples/OnboardingStory.md
 //
 
 import UIKit
 import InAppStorySDK
 
-class FavoritesController: UIViewController
+class MultifeedOnboardingController: UIViewController
 {
     fileprivate var storyView: StoryView!
     
@@ -19,22 +19,27 @@ class FavoritesController: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupInAppStory()
 
         setupStoryView()
     }
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // show onboarding reader with completion for custom feed id
+        InAppStory.shared.showOnboardings(feed: "custom_feed", from: self, delegate: self) { show in
+            print("Story reader \(show ? "is" : "not") showing")
+        }
+    }
 }
 
-extension FavoritesController
+extension MultifeedOnboardingController
 {
     fileprivate func setupInAppStory()
     {
         // setup InAppStorySDK for user with ID
         InAppStory.shared.settings = Settings(userID: "")
-        // enable favorite button in reader & showinng favorite cell in the end of list
-        InAppStory.shared.favoritePanel = true
     }
     
     fileprivate func setupStoryView()
@@ -67,7 +72,7 @@ extension FavoritesController
     }
 }
 
-extension FavoritesController: InAppStoryDelegate
+extension MultifeedOnboardingController: InAppStoryDelegate
 {
     // delegate method, called when the data is updated
     func storiesDidUpdated(isContent: Bool, from storyType: StoriesType)
@@ -78,12 +83,12 @@ extension FavoritesController: InAppStoryDelegate
         
         if currentStoryView.isContent {
             switch storyType {
-            case .list:
-                print("StoryView has content")
+            case .list(let feed):
+                print("StoryView has content in feed \(feed ?? "")")
             case .single:
                 print("SingleStory has content")
-            case .onboarding:
-                print("Onboarding has content")
+            case .onboarding(let feed):
+                print("Onboarding has content in feed \(feed)")
             }
         } else {
             print("No content")
@@ -102,12 +107,12 @@ extension FavoritesController: InAppStoryDelegate
     func storyReaderWillShow(with storyType: StoriesType)
     {
         switch storyType {
-        case .list:
-            print("StoryView reader will show")
+        case .list(let feed):
+            print("StoryView reader will show from feed \(feed ?? "")")
         case .single:
             print("SingleStory reader will show")
-        case .onboarding:
-            print("Onboarding reader will show")
+        case .onboarding(let feed):
+            print("Onboarding reader will show from feed \(feed)")
         }
     }
     
@@ -115,22 +120,20 @@ extension FavoritesController: InAppStoryDelegate
     func storyReaderDidClose(with storyType: StoriesType)
     {
         switch storyType {
-        case .list:
-            print("StoryView reader did close")
+        case .list(let feed):
+            print("StoryView reader did close to feed \(feed ?? "")")
         case .single:
             print("SingleStory reader did close")
-        case .onboarding:
-            print("Onboarding reader did close")
+        case .onboarding(let feed):
+            print("Onboarding reader did close to feed \(feed)")
         }
     }
     
     // delegate method, called when the favorite cell has been selected
     func favoriteCellDidSelect()
     {
-        // present controller with favorites story list
-        let navigationController = UINavigationController(rootViewController: FavoritesListController())
-        navigationController.navigationBar.isTranslucent = false
-        
-        present(navigationController, animated: true)
+        // InAppStory.shared.favoritePanel is false, favorites cell is not displayed
+        // method called only the method is called only when the favorite cell is selected
+        // see FavoritesController.swift
     }
 }

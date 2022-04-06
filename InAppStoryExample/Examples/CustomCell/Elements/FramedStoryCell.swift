@@ -7,6 +7,7 @@
 
 import UIKit
 import AVFoundation
+import InAppStorySDK
 
 class FramedStoryCell: UICollectionViewCell
 {
