@@ -1,15 +1,16 @@
 //
-//  FavoritesController.swift
+//  PreloaderController.swift
 //  InAppStoryExample
 //
-//  For more information see: https://github.com/inappstory/ios-sdk/blob/main/Samples/Favorites.md
+//  Created by StPashik on 14.04.2022.
 //
 
 import UIKit
 import InAppStorySDK
 
-class FavoritesController: UIViewController
+class PreloaderController: UIViewController
 {
+    fileprivate var loadingIndicator: UIActivityIndicatorView!
     fileprivate var storyView: StoryView!
     
     override func loadView() {
@@ -27,20 +28,18 @@ class FavoritesController: UIViewController
 
 }
 
-extension FavoritesController
+extension PreloaderController
 {
     fileprivate func setupInAppStory()
     {
         // setup InAppStorySDK for user with ID
         InAppStory.shared.settings = Settings(userID: "")
-        // enable favorite button in reader & showinng favorite cell in the end of list
-        InAppStory.shared.panelSettings = PanelSettings(favorites: true)
     }
     
     fileprivate func setupStoryView()
     {
         // create instance of StoryView
-        storyView = StoryView(frame: .zero, favorite: false)
+        storyView = StoryView()
         storyView.translatesAutoresizingMaskIntoConstraints = false
         // adding a point from where the reader will be shown
         storyView.target = self
@@ -64,10 +63,37 @@ extension FavoritesController
         
         // running internal StoryView logic
         storyView.create()
+        
+        setupPreloader()
+    }
+    
+    fileprivate func setupPreloader()
+    {
+        // create preloader activity indicator
+        loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.large
+        loadingIndicator.startAnimating()
+        self.view.addSubview(loadingIndicator)
+        
+        var allConstraints: [NSLayoutConstraint] = []
+        let horConstraint = NSLayoutConstraint.constraints(withVisualFormat: "V:[storyView]-(<=1)-[loadingIndicator]",
+                                                         options: NSLayoutConstraint.FormatOptions.alignAllCenterX,
+                                                         metrics: nil,
+                                                         views: ["storyView": storyView!,"loadingIndicator": loadingIndicator!])
+                
+        allConstraints += horConstraint
+        let vertConstraint = NSLayoutConstraint.constraints(withVisualFormat:"H:[superview]-(<=1)-[loadingIndicator]",
+                                                     options: NSLayoutConstraint.FormatOptions.alignAllCenterY,
+                                                     metrics: nil,
+                                                     views: ["storyView": storyView!, "loadingIndicator": loadingIndicator!])
+        
+        allConstraints += vertConstraint
+        NSLayoutConstraint.activate(allConstraints)
     }
 }
 
-extension FavoritesController: InAppStoryDelegate
+extension PreloaderController: InAppStoryDelegate
 {
     // delegate method, called when the data is updated
     func storiesDidUpdated(isContent: Bool, from storyType: StoriesType)
@@ -76,17 +102,11 @@ extension FavoritesController: InAppStoryDelegate
             return
         }
         
-        if currentStoryView.isContent {
-            switch storyType {
-            case .list:
-                print("StoryView has content")
-            case .single:
-                print("SingleStory has content")
-            case .onboarding:
-                print("Onboarding has content")
-            }
-        } else {
-            print("No content")
+        if isContent { //StoryView has content
+            loadingIndicator.stopAnimating()
+        } else { //StoryView has't content
+            loadingIndicator.stopAnimating()
+            currentStoryView.isHidden = true
         }
     }
     
@@ -96,41 +116,5 @@ extension FavoritesController: InAppStoryDelegate
         if let url = URL(string: target) {
             UIApplication.shared.open(url)
         }
-    }
-    
-    // delegate method, called when the reader will show
-    func storyReaderWillShow(with storyType: StoriesType)
-    {
-        switch storyType {
-        case .list:
-            print("StoryView reader will show")
-        case .single:
-            print("SingleStory reader will show")
-        case .onboarding:
-            print("Onboarding reader will show")
-        }
-    }
-    
-    // delegate method, called when the reader did close
-    func storyReaderDidClose(with storyType: StoriesType)
-    {
-        switch storyType {
-        case .list:
-            print("StoryView reader did close")
-        case .single:
-            print("SingleStory reader did close")
-        case .onboarding:
-            print("Onboarding reader did close")
-        }
-    }
-    
-    // delegate method, called when the favorite cell has been selected
-    func favoriteCellDidSelect()
-    {
-        // present controller with favorites story list
-        let navigationController = UINavigationController(rootViewController: FavoritesListController())
-        navigationController.navigationBar.isTranslucent = false
-        
-        present(navigationController, animated: true)
     }
 }

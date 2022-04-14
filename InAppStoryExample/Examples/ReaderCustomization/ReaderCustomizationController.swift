@@ -61,12 +61,10 @@ extension ReaderCustomizationController
         InAppStory.shared.closeReaderImage = UIImage(named: "closeIcon")!
         
         InAppStory.shared.refreshImage = UIImage(named: "refresh")!
-        // enable like function in reader
-        InAppStory.shared.likePanel = true
-        // enable favorite function in reader
-        InAppStory.shared.favoritePanel = true
-        // enable share function in reader
-        InAppStory.shared.sharePanel = true
+        
+        InAppStory.shared.panelSettings = PanelSettings(like: true, // enable like function in reader
+                                                        favorites: true, // enable favorite function in reader
+                                                        share: true) // enable share function in reader
         // set position of close button in reader
         InAppStory.shared.closeButtonPosition = .bottomLeft
         // set animation for switching between stories in the reader

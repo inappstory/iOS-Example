@@ -145,9 +145,7 @@ extension MainTableController
         InAppStory.shared.placeholderElementColor = .white
         InAppStory.shared.placeholderBackgroundColor = .clear
         
-        InAppStory.shared.likePanel = false
-        InAppStory.shared.favoritePanel = false
-        InAppStory.shared.sharePanel = false
+        InAppStory.shared.panelSettings = PanelSettings()
         
         InAppStory.shared.placeholderView = nil
         InAppStory.shared.gamePlaceholderView = nil
