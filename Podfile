@@ -4,5 +4,5 @@ platform :ios, '10.0'
 target 'InAppStoryExample' do
   use_frameworks!
 
-  pod 'InAppStory', :git => 'https://github.com/inappstory/ios-sdk.git', :tag => '1.15.1'
+  pod 'InAppStory', :git => 'https://github.com/inappstory/ios-sdk.git', :tag => '1.15.2'
 end
