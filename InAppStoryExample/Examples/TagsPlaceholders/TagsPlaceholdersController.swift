@@ -42,6 +42,9 @@ extension TagsPlaceholdersController
         
         // set replacing placeholders list
         InAppStory.shared.placeholders = ["one" : "Replace one", "two" : "Replace two"]
+        
+        // set replacing images placeholders list
+        InAppStory.shared.imagesPlaceholders = ["img_1" : "imageURL_1", "img_2" : "imageURL_1"]
     }
     
     fileprivate func setupStoryView()
