@@ -112,9 +112,15 @@ extension MainTableController
             showExample(with: SimpleGoodsController())
             break
         case 11:
-            showExample(with: MultifeedController())
+            showExample(with: CustomCellGoodsController())
             break
         case 12:
+            showExample(with: CustomGoodsController())
+            break
+        case 13:
+            showExample(with: MultifeedController())
+            break
+        case 14:
             showExample(with: MultifeedOnboardingController())
             break
         default:

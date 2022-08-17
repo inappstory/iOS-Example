@@ -24,6 +24,8 @@
 		319B6BDE2667781500589B27 /* UIImageView+CS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319B6BDD2667781500589B27 /* UIImageView+CS.swift */; };
 		319B6BE026677DBD00589B27 /* FavoritesListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319B6BDF26677DBD00589B27 /* FavoritesListController.swift */; };
 		319B6BE22667BFA900589B27 /* NotificationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319B6BE12667BFA900589B27 /* NotificationsController.swift */; };
+		31BD304928ACE77000DB6788 /* InAppStorySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31BD304828ACE77000DB6788 /* InAppStorySDK.framework */; };
+		31BD304A28ACE77000DB6788 /* InAppStorySDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 31BD304828ACE77000DB6788 /* InAppStorySDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		31BFD94F266655C800548EE9 /* CustomCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BFD94E266655C800548EE9 /* CustomCellController.swift */; };
 		31BFD951266655DE00548EE9 /* FavoritesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BFD950266655DE00548EE9 /* FavoritesController.swift */; };
 		31BFD953266655F800548EE9 /* ReaderCustomizationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BFD952266655F800548EE9 /* ReaderCustomizationController.swift */; };
@@ -38,6 +40,20 @@
 		31D5FABD266523B700CC8BA5 /* CellCustomizationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D5FABC266523B700CC8BA5 /* CellCustomizationController.swift */; };
 		ACE64286517D13FC382C2B93 /* Pods_InAppStoryExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A23710926FA87641AC599CD /* Pods_InAppStoryExample.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		31BD304B28ACE77000DB6788 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				31BD304A28ACE77000DB6788 /* InAppStorySDK.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1A23710926FA87641AC599CD /* Pods_InAppStoryExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InAppStoryExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,6 +80,7 @@
 		319B6BDD2667781500589B27 /* UIImageView+CS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+CS.swift"; sourceTree = "<group>"; };
 		319B6BDF26677DBD00589B27 /* FavoritesListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesListController.swift; sourceTree = "<group>"; };
 		319B6BE12667BFA900589B27 /* NotificationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsController.swift; sourceTree = "<group>"; };
+		31BD304828ACE77000DB6788 /* InAppStorySDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = InAppStorySDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		31BFD94E266655C800548EE9 /* CustomCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCellController.swift; sourceTree = "<group>"; };
 		31BFD950266655DE00548EE9 /* FavoritesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesController.swift; sourceTree = "<group>"; };
 		31BFD952266655F800548EE9 /* ReaderCustomizationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderCustomizationController.swift; sourceTree = "<group>"; };
@@ -85,6 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31BD304928ACE77000DB6788 /* InAppStorySDK.framework in Frameworks */,
 				ACE64286517D13FC382C2B93 /* Pods_InAppStoryExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -294,6 +312,7 @@
 		6C94598CE892B759A03EEE36 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				31BD304828ACE77000DB6788 /* InAppStorySDK.framework */,
 				3120AE9728087D8E00659FB1 /* InAppStorySDK.framework */,
 				3120AE902808645900659FB1 /* InAppStorySDK.framework */,
 				31C08F9E27FDB50100D91DC8 /* InAppStorySDK.framework */,
@@ -323,7 +342,7 @@
 				3196F74A2660DE9000E0DC1A /* Sources */,
 				3196F74B2660DE9000E0DC1A /* Frameworks */,
 				3196F74C2660DE9000E0DC1A /* Resources */,
-				A0FAEADD6086EE807F927394 /* [CP] Embed Pods Frameworks */,
+				31BD304B28ACE77000DB6788 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -402,23 +421,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A0FAEADD6086EE807F927394 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-InAppStoryExample/Pods-InAppStoryExample-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-InAppStoryExample/Pods-InAppStoryExample-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-InAppStoryExample/Pods-InAppStoryExample-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

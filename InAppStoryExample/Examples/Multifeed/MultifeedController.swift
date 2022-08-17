@@ -55,8 +55,6 @@ extension MultifeedController
         
         self.view.addSubview(customFeedStoryView)
         
-        
-        
         var allConstraints: [NSLayoutConstraint] = []
         allConstraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-(0)-[storyView]-(0)-|",
                                                          options: [.alignAllLeading, .alignAllTrailing],
@@ -67,7 +65,7 @@ extension MultifeedController
                                                          metrics: nil,
                                                          views: ["customFeedStoryView": customFeedStoryView!])
         allConstraints += NSLayoutConstraint.constraints(withVisualFormat: "V:|-(16)-[storyView(180)]-(16)-[customFeedStoryView(180)]",
-                                                         options: [.alignAllTop, .alignAllBottom],
+                                                         options: [.alignAllLeft],
                                                          metrics: nil,
                                                          views: ["storyView": storyView!, "customFeedStoryView": customFeedStoryView!])
         NSLayoutConstraint.activate(allConstraints)
