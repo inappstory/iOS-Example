@@ -28,7 +28,7 @@ class OnboardingController: UIViewController
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         // show onboarding reader with completion
-        InAppStory.shared.showOnboardings(from: self, delegate: self) { show in
+        InAppStory.shared.showOnboardings(limit: 2, from: self, delegate: self) { show in
             print("Story reader \(show ? "is" : "not") showing")
         }
     }
