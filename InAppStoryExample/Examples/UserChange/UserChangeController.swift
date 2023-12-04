@@ -2,16 +2,43 @@
 //  UserChangeController.swift
 //  InAppStoryExample
 //
-//  For more information see: https://github.com/inappstory/ios-sdk/blob/main/Samples/UserChange.md
-//
 
 import UIKit
 import InAppStorySDK
 
-class UserChangeController: UIViewController
-{
+/// Example of changing a user in an application
+///
+/// After initializing and configuring `InAppStory`, it may be necessary to change the user in the SDK,
+///  for example after authorization. To do this, you need to create a new `Settings` object and set it to `InAppStory.shared.settings`.
+///
+/// If the application has a list of stories, then after setting a new UserID, you should call `StoryView` method `refresh()`.
+/// Also, if the application significantly redraws the screen after changing the user, you can recreate `StoryView`.
+///
+/// If the application does not use the `StoryView` list, and only displays onboarding and single stories,
+/// then after setting a new UserID, you don't need to do anything, the next time you call the reader,
+/// the SDK will display stories for the new user.
+///
+/// - Note: If it is necessary to display the list of stories or the reader's appearance differently for different users, 
+/// for example, an unauthorized user cannot like stories and add them to favorites,
+/// it is recommended to set these settings immediately after setting a new UserID in `InAppStory`.
+///
+/// Also, if a new user needs to assign a new set of tags or display a different feed, they can be specified
+/// when `refresh` is called. For more information on tags, see ``TagsPlaceholdersController``
+/// ```
+/// func changeUser() {
+///     InAppStory.shared.settings = Settings(userID: <String>)
+///     storyView.refresh(newFeed: "new_feed", newTags: ["newTag_1", "newTag_2"])
+/// }
+/// ```
+///
+/// For more information see: [User change](https://docs.inappstory.com/sdk-guides/ios/user-change.html#user-change)
+class UserChangeController: UIViewController {
+    /// List of stories
     fileprivate var storyView: StoryView!
+    /// Closure handler from `StoryView`
+    fileprivate var closureHandler: StoriesClosureHandler!
     
+    /// Customizing the appearance of the controller
     override func loadView() {
         view = UIView()
         view.backgroundColor = .white
@@ -19,8 +46,10 @@ class UserChangeController: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        /// Configuring `InAppStory` before use
         setupInAppStory()
+        /// Create and add a list of stories to the screen
+        setupStoryView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,16 +59,15 @@ class UserChangeController: UIViewController
     }
 }
 
-extension UserChangeController
-{
-    fileprivate func setupInAppStory()
-    {
-        // setup InAppStorySDK for user with ID
+extension UserChangeController {
+    /// Configuring InAppStory before use
+    fileprivate func setupInAppStory() {
+        /// setup `InAppStorySDK` for user with ID
         InAppStory.shared.settings = Settings(userID: "")
     }
     
-    fileprivate func setupInterface()
-    {
+    /// Creating and customizing the user change button
+    fileprivate func setupInterface() {
         let button = UIButton(frame: .zero)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Change User", for: .normal)
@@ -55,113 +83,48 @@ extension UserChangeController
         let heightConstraint = NSLayoutConstraint(item: button, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 30)
         
         NSLayoutConstraint.activate([centerXConstraint, centerYConstraint, widthConstraint, heightConstraint])
-        
-        setupStoryView()
     }
     
-    fileprivate func setupStoryView()
-    {        
-        // create instance of StoryView
-        storyView = StoryView(frame: .zero, favorite: false)
+    /// Create and add a list of stories to the screen
+    fileprivate func setupStoryView() {
+        /// create instance of `StoryView`
+        storyView = StoryView()
         storyView.translatesAutoresizingMaskIntoConstraints = false
-        // adding a point from where the reader will be shown
+        /// adding a point from where the reader will be shown
         storyView.target = self
-        // set StoryView delegate
-        storyView.storiesDelegate = self
-        
+        /// creating a closure handler for `storyView`
+        closureHandler = StoriesClosureHandler(storyView: storyView)
+        /// adding a storyView as a subview to the controller
         self.view.addSubview(storyView)
         
+        /// configuring the constants to display the list correctly
         var allConstraints: [NSLayoutConstraint] = []
+        /// horizontally - from edge to edge
         let horConstraint = NSLayoutConstraint.constraints(withVisualFormat: "H:|-(0)-[storyView]-(0)-|",
                                                            options: [.alignAllLeading, .alignAllTrailing],
                                                            metrics: nil,
                                                            views: ["storyView": storyView!])
         allConstraints += horConstraint
+        /// vertically - height 180pt with a 16pt indent at the top
         let vertConstraint = NSLayoutConstraint.constraints(withVisualFormat: "V:|-(16)-[storyView(180)]",
                                                             options: [.alignAllTop, .alignAllBottom],
                                                             metrics: nil,
                                                             views: ["storyView": storyView!])
         allConstraints += vertConstraint
+        /// constraints activation
         NSLayoutConstraint.activate(allConstraints)
         
-        // running internal StoryView logic
+        /// running internal `StoryView` logic
         storyView.create()
     }
 }
 
-extension UserChangeController
-{
-    @objc func buttonAction(sender: UIButton!)
-    {
-        // set setting with new uesrID
+extension UserChangeController {
+    /// Processing of user change button pressing
+    @objc func buttonAction(sender: UIButton!) {
+        /// set setting with new uesrID
         InAppStory.shared.settings = Settings(userID: "newUser")
-        // for update data, need refres StoryView
+        /// for update data, need refres StoryView
         storyView.refresh()
-    }
-}
-
-extension UserChangeController: InAppStoryDelegate
-{
-    // delegate method, called when the data is updated
-    func storiesDidUpdated(isContent: Bool, from storyType: StoriesType)
-    {
-        guard let currentStoryView = storyView else {
-            return
-        }
-        
-        if currentStoryView.isContent {
-            switch storyType {
-            case .list:
-                print("StoryView has content")
-            case .single:
-                print("SingleStory has content")
-            case .onboarding:
-                print("Onboarding has content")
-            }
-        } else {
-            print("No content")
-        }
-    }
-    
-    // delegate method, called when a button or SwipeUp event is triggered in the reader
-    // types is .button, .game, .deeplink, .swipe
-    func storyReader(actionWith target: String, for type: ActionType, from storyType: StoriesType) {
-        if let url = URL(string: target) {
-            UIApplication.shared.open(url)
-        }
-    }
-    
-    // delegate method, called when the reader will show
-    func storyReaderWillShow(with storyType: StoriesType)
-    {
-        switch storyType {
-        case .list:
-            print("StoryView reader will show")
-        case .single:
-            print("SingleStory reader will show")
-        case .onboarding:
-            print("Onboarding reader will show")
-        }
-    }
-    
-    // delegate method, called when the reader did close
-    func storyReaderDidClose(with storyType: StoriesType)
-    {
-        switch storyType {
-        case .list:
-            print("StoryView reader did close")
-        case .single:
-            print("SingleStory reader did close")
-        case .onboarding:
-            print("Onboarding reader did close")
-        }
-    }
-    
-    // delegate method, called when the favorite cell has been selected
-    func favoriteCellDidSelect()
-    {
-        // InAppStory.shared.favoritePanel is false, favorites cell is not displayed
-        // method called only the method is called only when the favorite cell is selected
-        // see FavoritesController.swift
     }
 }

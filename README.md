@@ -26,5 +26,4 @@ To get started, you need:
 - **CustomCellGoodsController** - custom GoodsWidget cell
 - **CustomGoodsController** - custom GoodsWidget view
 - **MultifeedController** - Multi-feed usage example
-- **MultifeedOnboardingController** - example for onboarding with multi-feed
 - **PreloaderController** - placeholder (skeleton) example for StoryView

@@ -6,11 +6,46 @@
 import UIKit
 import InAppStorySDK
 
-class MultifeedController: UIViewController
-{
+/// Example of using Multi-feed functionality
+///
+/// In order to display several different ribbons on the screen, it is necessary to specify different feeds for them during initialization.
+/// ```
+/// StoryView(feed: "custom_feed")
+/// ```
+///
+/// In order to distinguish events coming in closures, for example ``StoriesClosureHandler/storiesDidUpdated(_:_:)``,
+/// in the `storyType` parameter, where possible, the feed from the list that caused the given closure will come.
+/// ```
+/// func storiesDidUpdated(_ isContent: Bool, _ storyType: StoriesType) {
+///     switch storyType {
+///     case .list(let feed):
+///         print("StoryView with feed \(feed ?? "")")
+///     case .single:
+///         print("SingleStory has no feed")
+///     case .onboarding(let feed):
+///         print("Onboarding with feed \(feed)")
+///     case .ugcList:
+///         print("UGC StoryView has no feed")
+///     @unknown default:
+///         break
+///     }
+/// }
+/// ```
+///
+/// - Note: When updating tags or changing users, you must call `.refresh()` on each list individually.
+///
+/// For more information see: [Multi-feed](https://docs.inappstory.com/sdk-guides/ios/multi-feed.html#multi-feed)
+class MultifeedController: UIViewController {
+    /// List of stories
     fileprivate var storyView: StoryView!
+    /// List of another stories
     fileprivate var customFeedStoryView: StoryView!
+    /// Closure handler from `StoryView`
+    fileprivate var closureHandler: StoriesClosureHandler!
+    /// Closure handler from `StoryView`
+    fileprivate var storiesFeedClosure: StoriesClosureHandler!
     
+    /// Customizing the appearance of the controller
     override func loadView() {
         view = UIView()
         view.backgroundColor = .white
@@ -18,118 +53,65 @@ class MultifeedController: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        /// Configuring `InAppStory` before use
         setupInAppStory()
-
+        /// Create and add a list of stories to the screen
         setupStoryViews()
     }
 }
 
-extension MultifeedController
-{
-    fileprivate func setupInAppStory()
-    {
-        // setup InAppStorySDK for user with ID
+extension MultifeedController{
+    /// Configuring InAppStory before use
+    fileprivate func setupInAppStory() {
+        /// setup `InAppStorySDK` for user with ID
         InAppStory.shared.settings = Settings(userID: "")
     }
     
-    fileprivate func setupStoryViews()
-    {
-        // create instance of StoryView with default feed
-        storyView = StoryView(favorite: false)
+    /// Create and add a list of stories to the screen
+    fileprivate func setupStoryViews() {
+        /// create instance of `StoryView`
+        storyView = StoryView()
         storyView.translatesAutoresizingMaskIntoConstraints = false
-        // adding a point from where the reader will be shown
+        /// adding a point from where the reader will be shown
         storyView.target = self
-        // set StoryView delegate
-        storyView.storiesDelegate = self
-        
+        /// creating a closure handler for `storyView`
+        closureHandler = StoriesClosureHandler(storyView: storyView)
+        /// adding a storyView as a subview to the controller
         self.view.addSubview(storyView)
         
-        // create instance of StoryView with custom feed id - "custom_feed"
-        customFeedStoryView = StoryView(feed: "custom_feed", favorite: false)
+        /// create instance of StoryView with custom feed id - "custom_feed"
+        customFeedStoryView = StoryView(feed: "custom_feed")
         customFeedStoryView.translatesAutoresizingMaskIntoConstraints = false
-        // adding a point from where the reader will be shown
+        /// adding a point from where the reader will be shown
         customFeedStoryView.target = self
-        // set StoryView delegate
-        customFeedStoryView.storiesDelegate = self
-        
+        /// creating a closure handler for `storyView`
+        storiesFeedClosure = StoriesClosureHandler(storyView: customFeedStoryView)
+        /// adding a storyView as a subview to the controller
         self.view.addSubview(customFeedStoryView)
         
+        /// configuring the constants to display the list correctly
         var allConstraints: [NSLayoutConstraint] = []
+        /// horizontally - from edge to edge
         allConstraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-(0)-[storyView]-(0)-|",
                                                          options: [.alignAllLeading, .alignAllTrailing],
                                                          metrics: nil,
                                                          views: ["storyView": storyView!])
+        /// horizontally - from edge to edge
         allConstraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-(0)-[customFeedStoryView]-(0)-|",
                                                          options: [.alignAllLeading, .alignAllTrailing],
                                                          metrics: nil,
                                                          views: ["customFeedStoryView": customFeedStoryView!])
+        /// vertically - height 180pt with a 16pt indent at the top and other
         allConstraints += NSLayoutConstraint.constraints(withVisualFormat: "V:|-(16)-[storyView(180)]-(16)-[customFeedStoryView(180)]",
                                                          options: [.alignAllLeft],
                                                          metrics: nil,
                                                          views: ["storyView": storyView!, "customFeedStoryView": customFeedStoryView!])
+        /// constraints activation
         NSLayoutConstraint.activate(allConstraints)
         
-        // running internal StoryView logic
+        /// running internal `StoryView` logic
         storyView.create()
+        /// running internal `StoryView` logic
         customFeedStoryView.create()
-    }
-}
-
-extension MultifeedController: InAppStoryDelegate
-{
-    // delegate method, called when the data is updated
-    func storiesDidUpdated(isContent: Bool, from storyType: StoriesType)
-    {
-        guard let currentStoryView = storyView else {
-            return
-        }
-        
-        if currentStoryView.isContent {
-            switch storyType {
-            case .list(let feed):
-                print("StoryView has content in feed \(feed ?? "")")
-            case .single:
-                print("SingleStory has content")
-            case .onboarding(let feed):
-                print("Onboarding has content in feed \(feed)")
-            }
-        } else {
-            print("No content")
-        }
-    }
-    
-    // delegate method, called when a button or SwipeUp event is triggered in the reader
-    // types is .button, .game, .deeplink, .swipe
-    func storyReader(actionWith target: String, for type: ActionType, from storyType: StoriesType) {
-        if let url = URL(string: target) {
-            UIApplication.shared.open(url)
-        }
-    }
-    
-    // delegate method, called when the reader will show
-    func storyReaderWillShow(with storyType: StoriesType)
-    {
-        switch storyType {
-        case .list(let feed):
-            print("StoryView reader will show from feed \(feed ?? "")")
-        case .single:
-            print("SingleStory reader will show")
-        case .onboarding(let feed):
-            print("Onboarding reader will show from feed \(feed)")
-        }
-    }
-    
-    // delegate method, called when the reader did close
-    func storyReaderDidClose(with storyType: StoriesType)
-    {
-        switch storyType {
-        case .list(let feed):
-            print("StoryView reader did close to feed \(feed ?? "")")
-        case .single:
-            print("SingleStory reader did close")
-        case .onboarding(let feed):
-            print("Onboarding reader did close to feed \(feed)")
-        }
     }
 }

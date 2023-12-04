@@ -2,16 +2,38 @@
 //  CellCustomizationController.swift
 //  InAppStoryExample
 //
-//  For more information see: https://github.com/inappstory/ios-sdk/blob/main/Samples/CustomCell.md
-//
 
 import UIKit
 import InAppStorySDK
 
+/// Simple customize a `StoryView` list cell using `InAppStory` parameters and closures.
+/// Customization through properties changes the appearance of a standard cell with fixed rounding and border thickness.
+/// Sizes also apply to the favorites cell. To change the appearance, shape and behavior of a cell, you need to create your own cell.
+/// You can see an example of how to create your own cell in ``CustomCellController``
+///
+/// If you use only `InAppStory` parameters to change the cell view, its size is automatically calculated:
+/// * for a horizontal list - equal to the `StoryView` height minus the indents and has the aspect ratio set in the console for the project;
+/// * for a vertical list - equal to the width of the `StoryView` list minus the indents from the list edge, the indents between cells and the aspect ratio set in the console for the project;
+///
+/// For your own control over the size and indentation of cells in a list, you should use closures.
+/// The list of stories is based on `UICollectionView`, by this closure has been named as `UICollectionViewDelegateFlowLayout` methods and is responsible for the same thing.
+/// The implementation of closures can be seen in ``StoriesClosureHandler``
+/// ```
+/// sizeForItem() -> CGSize
+/// insetForSection() -> UIEdgeInsets
+/// minimumLineSpacingForSection() -> CGFloat
+/// minimumInteritemSpacingForSection() -> CGFloat
+/// ```
+///
+/// A full list of parameters for cell customization can be found here  [List customization](https://docs.inappstory.com/sdk-guides/ios/appearance.html#list-customization)
 class CellCustomizationController: UIViewController
 {
+    /// List of stories
     fileprivate var storyView: StoryView!
+    /// Closure handler from `StoryView`
+    fileprivate var closureHandler: StoriesClosureHandler!
     
+    /// Customizing the appearance of the controller
     override func loadView() {
         view = UIView()
         view.backgroundColor = .white
@@ -19,150 +41,59 @@ class CellCustomizationController: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        /// Configuring `InAppStory` before use
         setupInAppStory()
-
+        /// Create and add a list of stories to the screen
         setupStoryView()
     }
 }
 
-extension CellCustomizationController
-{
-    fileprivate func setupInAppStory()
-    {
-        // setup InAppStorySDK for user with ID
+extension CellCustomizationController {
+    /// Configuring InAppStory before use
+    fileprivate func setupInAppStory() {
+        /// setup InAppStorySDK for user with ID
         InAppStory.shared.settings = Settings(userID: "")
-        
-        // quality of cover images in cells
+        /// quality of cover images in cells
         InAppStory.shared.coverQuality = .high
-        
-        // show title in cell
+        /// show title in cell
         InAppStory.shared.showCellTitle = true
-    
-        // color of cell border
+        /// color of cell border
         InAppStory.shared.cellBorderColor = .purple
-        // cell title font
+        /// cell title font
         InAppStory.shared.cellFont = UIFont.systemFont(ofSize: 12.0)
     }
     
-    fileprivate func setupStoryView()
-    {        
-        // create instance of StoryView
-        storyView = StoryView(frame: .zero, favorite: false)
+    /// Create and add a list of stories to the screen
+    fileprivate func setupStoryView() {
+        /// create instance of `StoryView`
+        storyView = StoryView()
         storyView.translatesAutoresizingMaskIntoConstraints = false
-        // adding a point from where the reader will be shown
+        /// adding a point from where the reader will be shown
         storyView.target = self
-        // set StoryView delegate
-        storyView.storiesDelegate = self
-        // set delegate for layout of StoryView
-        storyView.deleagateFlowLayout = self
-        
+        /// creating a closure handler for `storyView` with cell lyout settings
+        /// cell settings are set in the extension ``StoriesClosureHandler/sizeForItem()``
+        closureHandler = StoriesClosureHandler(storyView: storyView, withCellLayout: true)
+        /// adding a storyView as a subview to the controller
         self.view.addSubview(storyView)
         
+        /// configuring the constants to display the list correctly
         var allConstraints: [NSLayoutConstraint] = []
+        /// horizontally - from edge to edge
         let horConstraint = NSLayoutConstraint.constraints(withVisualFormat: "H:|-(0)-[storyView]-(0)-|",
                                                            options: [.alignAllLeading, .alignAllTrailing],
                                                            metrics: nil,
                                                            views: ["storyView": storyView!])
         allConstraints += horConstraint
+        /// vertically - height 180pt with a 16pt indent at the top
         let vertConstraint = NSLayoutConstraint.constraints(withVisualFormat: "V:|-(16)-[storyView(180)]",
                                                             options: [.alignAllTop, .alignAllBottom],
                                                             metrics: nil,
                                                             views: ["storyView": storyView!])
         allConstraints += vertConstraint
+        /// constraints activation
         NSLayoutConstraint.activate(allConstraints)
         
-        // running internal StoryView logic
+        /// running internal `StoryView` logic
         storyView.create()
-    }
-}
-
-extension CellCustomizationController: InAppStoryDelegate
-{
-    // delegate method, called when the data is updated
-    func storiesDidUpdated(isContent: Bool, from storyType: StoriesType)
-    {
-        guard let currentStoryView = storyView else {
-            return
-        }
-        
-        if currentStoryView.isContent {
-            switch storyType {
-            case .list:
-                print("StoryView has content")
-            case .single:
-                print("SingleStory has content")
-            case .onboarding:
-                print("Onboarding has content")
-            }
-        } else {
-            print("No content")
-        }
-    }
-    
-    // delegate method, called when a button or SwipeUp event is triggered in the reader
-    // types is .button, .game, .deeplink, .swipe
-    func storyReader(actionWith target: String, for type: ActionType, from storyType: StoriesType) {
-        if let url = URL(string: target) {
-            UIApplication.shared.open(url)
-        }
-    }
-    
-    // delegate method, called when the reader will show
-    func storyReaderWillShow(with storyType: StoriesType)
-    {
-        switch storyType {
-        case .list:
-            print("StoryView reader will show")
-        case .single:
-            print("SingleStory reader will show")
-        case .onboarding:
-            print("Onboarding reader will show")
-        }
-    }
-    
-    // delegate method, called when the reader did close
-    func storyReaderDidClose(with storyType: StoriesType)
-    {
-        switch storyType {
-        case .list:
-            print("StoryView reader did close")
-        case .single:
-            print("SingleStory reader did close")
-        case .onboarding:
-            print("Onboarding reader did close")
-        }
-    }
-    
-    // delegate method, called when the favorite cell has been selected
-    func favoriteCellDidSelect()
-    {
-        // InAppStory.shared.favoritePanel is false, favorites cell is not displayed
-        // method called only the method is called only when the favorite cell is selected
-        // see FavoritesController.swift
-    }
-}
-
-// methods of delegate, like in UICollectionViewDelegateFlowLayout
-extension CellCustomizationController: StoryViewDelegateFlowLayout
-{
-    func sizeForItem() -> CGSize
-    {
-        return CGSize(width: 120.0, height: 120.0)
-    }
-    
-    func insetForSection() -> UIEdgeInsets
-    {
-        return UIEdgeInsets(top: 16.0, left: 16.0, bottom: 16.0, right: 16.0)
-    }
-    
-    func minimumLineSpacingForSection() -> CGFloat
-    {
-        return 16.0
-    }
-    
-    func minimumInteritemSpacingForSection() -> CGFloat
-    {
-        return 16.0
     }
 }
