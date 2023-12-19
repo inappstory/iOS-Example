@@ -144,8 +144,6 @@ extension StoriesClosureHandler {
 
 /// These closures affect the location, size, and indentation of cells in the list.
 /// They work similarly to UICollectionViewDelegateFlowLayout methods
-///
-/// - Tag: listCustomzation
 extension StoriesClosureHandler {
     /// returns the cell size for the list
     func sizeForItem() -> CGSize {

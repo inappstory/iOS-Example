@@ -7,6 +7,7 @@ import UIKit
 import InAppStorySDK
 
 /// Simple customize a `StoryView` list cell using `InAppStory` parameters and closures.
+/// 
 /// Customization through properties changes the appearance of a standard cell with fixed rounding and border thickness.
 /// Sizes also apply to the favorites cell. To change the appearance, shape and behavior of a cell, you need to create your own cell.
 /// You can see an example of how to create your own cell in ``CustomCellController``

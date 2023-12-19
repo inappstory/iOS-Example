@@ -2,8 +2,6 @@
 //  OnboardingController.swift
 //  InAppStoryExample
 //
-//  For more information see: https://github.com/inappstory/ios-sdk/blob/main/Samples/OnboardingStory.md
-//
 
 import UIKit
 import InAppStorySDK
