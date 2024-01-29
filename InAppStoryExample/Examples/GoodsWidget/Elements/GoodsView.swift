@@ -60,7 +60,7 @@ class GoodsView: CustomGoodsView {
         print("Reader frame = CGRect(x: \(frame.origin.x), y: \(frame.origin.y), width: \(frame.width), height: \(frame.height)")
     }
     
-    /// Закрытие виджета по единичному тапу по экрану
+    /// Close widget by single tap on the screen
     @objc func handleSingleTap(_ recognizer: UITapGestureRecognizer?) {
         /// To close the widget in the reader, you need to call the `super.close()` method.
         /// This method closes only the goods widget, the reader remains.

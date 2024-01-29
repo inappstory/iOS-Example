@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -34,6 +34,12 @@
 		31BFD9592666562300548EE9 /* UserChangeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BFD9582666562300548EE9 /* UserChangeController.swift */; };
 		31BFD95B2666563200548EE9 /* TagsPlaceholdersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BFD95A2666563200548EE9 /* TagsPlaceholdersController.swift */; };
 		31C08FA427FDBB9200D91DC8 /* MultifeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C08FA327FDBB9200D91DC8 /* MultifeedController.swift */; };
+		31C2E55F2B67596400CA4300 /* CustomSharingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C2E55E2B67596400CA4300 /* CustomSharingController.swift */; };
+		31C2E5612B675B0B00CA4300 /* SharingAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C2E5602B675B0B00CA4300 /* SharingAction.swift */; };
+		31C2E5642B67652100CA4300 /* SharingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C2E5622B67652100CA4300 /* SharingViewController.swift */; };
+		31C2E5652B67652100CA4300 /* SharingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31C2E5632B67652100CA4300 /* SharingViewController.xib */; };
+		31C2E5692B67698D00CA4300 /* SharingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C2E5672B67698D00CA4300 /* SharingCell.swift */; };
+		31C2E56A2B67698D00CA4300 /* SharingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31C2E5682B67698D00CA4300 /* SharingCell.xib */; };
 		31D5FAB9266512C800CC8BA5 /* MainTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D5FAB8266512C800CC8BA5 /* MainTableController.swift */; };
 		31D5FABB26651CA500CC8BA5 /* SimpleIntegrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D5FABA26651CA500CC8BA5 /* SimpleIntegrationController.swift */; };
 		31D5FABD266523B700CC8BA5 /* CellCustomizationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D5FABC266523B700CC8BA5 /* CellCustomizationController.swift */; };
@@ -85,6 +91,12 @@
 		31BFD9582666562300548EE9 /* UserChangeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserChangeController.swift; sourceTree = "<group>"; };
 		31BFD95A2666563200548EE9 /* TagsPlaceholdersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsPlaceholdersController.swift; sourceTree = "<group>"; };
 		31C08FA327FDBB9200D91DC8 /* MultifeedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultifeedController.swift; sourceTree = "<group>"; };
+		31C2E55E2B67596400CA4300 /* CustomSharingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSharingController.swift; sourceTree = "<group>"; };
+		31C2E5602B675B0B00CA4300 /* SharingAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharingAction.swift; sourceTree = "<group>"; };
+		31C2E5622B67652100CA4300 /* SharingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharingViewController.swift; sourceTree = "<group>"; };
+		31C2E5632B67652100CA4300 /* SharingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SharingViewController.xib; sourceTree = "<group>"; };
+		31C2E5672B67698D00CA4300 /* SharingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharingCell.swift; sourceTree = "<group>"; };
+		31C2E5682B67698D00CA4300 /* SharingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SharingCell.xib; sourceTree = "<group>"; };
 		31D5FAB8266512C800CC8BA5 /* MainTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableController.swift; sourceTree = "<group>"; };
 		31D5FABA26651CA500CC8BA5 /* SimpleIntegrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleIntegrationController.swift; sourceTree = "<group>"; };
 		31D5FABC266523B700CC8BA5 /* CellCustomizationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellCustomizationController.swift; sourceTree = "<group>"; };
@@ -192,6 +204,27 @@
 			path = Multifeed;
 			sourceTree = "<group>";
 		};
+		31C2E55D2B67593700CA4300 /* CustomSharing */ = {
+			isa = PBXGroup;
+			children = (
+				31C2E55E2B67596400CA4300 /* CustomSharingController.swift */,
+				31C2E5622B67652100CA4300 /* SharingViewController.swift */,
+				31C2E5632B67652100CA4300 /* SharingViewController.xib */,
+				31C2E5602B675B0B00CA4300 /* SharingAction.swift */,
+				31C2E5662B67696100CA4300 /* Elements */,
+			);
+			path = CustomSharing;
+			sourceTree = "<group>";
+		};
+		31C2E5662B67696100CA4300 /* Elements */ = {
+			isa = PBXGroup;
+			children = (
+				31C2E5672B67698D00CA4300 /* SharingCell.swift */,
+				31C2E5682B67698D00CA4300 /* SharingCell.xib */,
+			);
+			path = Elements;
+			sourceTree = "<group>";
+		};
 		31D5FAAC2665118300CC8BA5 /* Examples */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +233,7 @@
 				31D5FAB12665118300CC8BA5 /* CellCustomization */,
 				31D5FAB62665118300CC8BA5 /* CustomCell */,
 				31D5FAAF2665118300CC8BA5 /* Favorites */,
+				31C2E55D2B67593700CA4300 /* CustomSharing */,
 				31D5FAB02665118300CC8BA5 /* ReaderCustomization */,
 				31D5FAB52665118300CC8BA5 /* Onboarding */,
 				31D5FAB22665118300CC8BA5 /* Single */,
@@ -332,13 +366,14 @@
 				3196F74B2660DE9000E0DC1A /* Frameworks */,
 				3196F74C2660DE9000E0DC1A /* Resources */,
 				31BD304B28ACE77000DB6788 /* Embed Frameworks */,
-				F9355EA2B88B599EC4DBD449 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = InAppStoryExample;
+			packageProductDependencies = (
+			);
 			productName = InAppStoryExample;
 			productReference = 3196F74E2660DE9000E0DC1A /* InAppStoryExample.app */;
 			productType = "com.apple.product-type.application";
@@ -366,6 +401,8 @@
 				Base,
 			);
 			mainGroup = 3196F7452660DE9000E0DC1A;
+			packageReferences = (
+			);
 			productRefGroup = 3196F74F2660DE9000E0DC1A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -385,6 +422,8 @@
 				3196F75B2660DE9000E0DC1A /* Assets.xcassets in Resources */,
 				311B26A6272947E600C25FB4 /* CustomGoodCell.xib in Resources */,
 				3197A30427B278D1004DE6D4 /* FramedStoryCell.xib in Resources */,
+				31C2E56A2B67698D00CA4300 /* SharingCell.xib in Resources */,
+				31C2E5652B67652100CA4300 /* SharingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,23 +452,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F9355EA2B88B599EC4DBD449 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-InAppStoryExample/Pods-InAppStoryExample-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-InAppStoryExample/Pods-InAppStoryExample-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-InAppStoryExample/Pods-InAppStoryExample-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -438,6 +460,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				311B269C2729431100C25FB4 /* CustomGoodsController.swift in Sources */,
+				31C2E5642B67652100CA4300 /* SharingViewController.swift in Sources */,
 				31C08FA427FDBB9200D91DC8 /* MultifeedController.swift in Sources */,
 				311B26992729428F00C25FB4 /* SimpleGoodsController.swift in Sources */,
 				3196F7522660DE9000E0DC1A /* AppDelegate.swift in Sources */,
@@ -445,7 +468,9 @@
 				31D5FAB9266512C800CC8BA5 /* MainTableController.swift in Sources */,
 				31BFD9592666562300548EE9 /* UserChangeController.swift in Sources */,
 				31BFD94F266655C800548EE9 /* CustomCellController.swift in Sources */,
+				31C2E5612B675B0B00CA4300 /* SharingAction.swift in Sources */,
 				319B6BDB2667778A00589B27 /* CustomStoryCell.swift in Sources */,
+				31C2E55F2B67596400CA4300 /* CustomSharingController.swift in Sources */,
 				313961C62B17268C00077A55 /* StoriesClosureHandler.swift in Sources */,
 				319B6BE026677DBD00589B27 /* FavoritesListController.swift in Sources */,
 				31BFD953266655F800548EE9 /* ReaderCustomizationController.swift in Sources */,
@@ -460,6 +485,7 @@
 				3152576E2B07556100089230 /* UIView+CS.swift in Sources */,
 				311B26A5272947E600C25FB4 /* CustomGoodCell.swift in Sources */,
 				311B26A827294AB100C25FB4 /* GoodsView.swift in Sources */,
+				31C2E5692B67698D00CA4300 /* SharingCell.swift in Sources */,
 				31BFD951266655DE00548EE9 /* FavoritesController.swift in Sources */,
 				31BFD9572666561400548EE9 /* SingleStoryController.swift in Sources */,
 			);

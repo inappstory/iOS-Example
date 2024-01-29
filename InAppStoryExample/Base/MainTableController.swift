@@ -12,6 +12,7 @@ class MainTableController: UITableViewController {
                     "Cell customization",
                     "Custom Cell",
                     "Favorites",
+                    "Custom sharing",
                     "Reader Customization",
                     "Onboarding",
                     "Single Story",
@@ -40,15 +41,6 @@ class MainTableController: UITableViewController {
     fileprivate func setupTableView()
     {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "exampleCell")
-    }
-}
-
-// MARK: - Navigation
-extension MainTableController
-{
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        
     }
 }
 
@@ -90,33 +82,36 @@ extension MainTableController
             showExample(with: FavoritesController())
             break
         case 4:
-            showExample(with: ReaderCustomizationController())
+            showExample(with: CustomSharingController())
             break
         case 5:
-            showExample(with: OnboardingController())
+            showExample(with: ReaderCustomizationController())
             break
         case 6:
-            showExample(with: SingleStoryController())
+            showExample(with: OnboardingController())
             break
         case 7:
-            showExample(with: UserChangeController())
+            showExample(with: SingleStoryController())
             break
         case 8:
-            showExample(with: TagsPlaceholdersController())
+            showExample(with: UserChangeController())
             break
         case 9:
-            showExample(with: NotificationsController())
+            showExample(with: TagsPlaceholdersController())
             break
         case 10:
-            showExample(with: SimpleGoodsController())
+            showExample(with: NotificationsController())
             break
         case 11:
-            showExample(with: CustomCellGoodsController())
+            showExample(with: SimpleGoodsController())
             break
         case 12:
-            showExample(with: CustomGoodsController())
+            showExample(with: CustomCellGoodsController())
             break
         case 13:
+            showExample(with: CustomGoodsController())
+            break
+        case 14:
             showExample(with: MultifeedController())
             break
         default:

@@ -16,6 +16,7 @@ To get started, you need:
 - **CellCustomizationController** - basic cell settings using the SDK  
 - **CustomCellController** - creating your own list cell and replacing the default
 - **FavoritesController** - enabling favorites and display a list of favorite storys
+- **CustomSharingController** - creating and displaying a customized sharing window
 - **ReaderCustomizationController** - customization of the reader by means of SDK
 - **OnboardingController** - display and work with onboarding stories
 - **SingleStoryController** - display and work with a single story
