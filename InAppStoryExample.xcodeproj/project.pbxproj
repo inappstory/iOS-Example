@@ -26,6 +26,10 @@
 		319B6BDE2667781500589B27 /* UIImageView+CS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319B6BDD2667781500589B27 /* UIImageView+CS.swift */; };
 		319B6BE026677DBD00589B27 /* FavoritesListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319B6BDF26677DBD00589B27 /* FavoritesListController.swift */; };
 		319B6BE22667BFA900589B27 /* NotificationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319B6BE12667BFA900589B27 /* NotificationsController.swift */; };
+		31A6B9432B728F2D00873EF8 /* StackfeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A6B9422B728F2D00873EF8 /* StackfeedController.swift */; };
+		31A6B9492B72964C00873EF8 /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A6B9482B72964C00873EF8 /* StackView.swift */; };
+		31A6B9562B72AB9100873EF8 /* InAppStorySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31A6B9552B72AB9100873EF8 /* InAppStorySDK.framework */; };
+		31A6B9572B72AB9100873EF8 /* InAppStorySDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 31A6B9552B72AB9100873EF8 /* InAppStorySDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		31BFD94F266655C800548EE9 /* CustomCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BFD94E266655C800548EE9 /* CustomCellController.swift */; };
 		31BFD951266655DE00548EE9 /* FavoritesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BFD950266655DE00548EE9 /* FavoritesController.swift */; };
 		31BFD953266655F800548EE9 /* ReaderCustomizationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BFD952266655F800548EE9 /* ReaderCustomizationController.swift */; };
@@ -47,12 +51,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		31BD304B28ACE77000DB6788 /* Embed Frameworks */ = {
+		31A6B9582B72AB9100873EF8 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				31A6B9572B72AB9100873EF8 /* InAppStorySDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -83,6 +88,9 @@
 		319B6BDD2667781500589B27 /* UIImageView+CS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+CS.swift"; sourceTree = "<group>"; };
 		319B6BDF26677DBD00589B27 /* FavoritesListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesListController.swift; sourceTree = "<group>"; };
 		319B6BE12667BFA900589B27 /* NotificationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsController.swift; sourceTree = "<group>"; };
+		31A6B9422B728F2D00873EF8 /* StackfeedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackfeedController.swift; sourceTree = "<group>"; };
+		31A6B9482B72964C00873EF8 /* StackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackView.swift; sourceTree = "<group>"; };
+		31A6B9552B72AB9100873EF8 /* InAppStorySDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = InAppStorySDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		31BFD94E266655C800548EE9 /* CustomCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCellController.swift; sourceTree = "<group>"; };
 		31BFD950266655DE00548EE9 /* FavoritesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesController.swift; sourceTree = "<group>"; };
 		31BFD952266655F800548EE9 /* ReaderCustomizationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderCustomizationController.swift; sourceTree = "<group>"; };
@@ -108,6 +116,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31A6B9562B72AB9100873EF8 /* InAppStorySDK.framework in Frameworks */,
 				ACE64286517D13FC382C2B93 /* Pods_InAppStoryExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -196,6 +205,23 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		31A6B9412B728F1A00873EF8 /* Stackfeed */ = {
+			isa = PBXGroup;
+			children = (
+				31A6B9422B728F2D00873EF8 /* StackfeedController.swift */,
+				31A6B9472B72963800873EF8 /* Elements */,
+			);
+			path = Stackfeed;
+			sourceTree = "<group>";
+		};
+		31A6B9472B72963800873EF8 /* Elements */ = {
+			isa = PBXGroup;
+			children = (
+				31A6B9482B72964C00873EF8 /* StackView.swift */,
+			);
+			path = Elements;
+			sourceTree = "<group>";
+		};
 		31C08FA227FDB6DA00D91DC8 /* Multifeed */ = {
 			isa = PBXGroup;
 			children = (
@@ -243,6 +269,7 @@
 				311B26972729426700C25FB4 /* GoodsWidget */,
 				3120AE942808647900659FB1 /* Preloader */,
 				31C08FA227FDB6DA00D91DC8 /* Multifeed */,
+				31A6B9412B728F1A00873EF8 /* Stackfeed */,
 			);
 			path = Examples;
 			sourceTree = "<group>";
@@ -341,6 +368,7 @@
 			isa = PBXGroup;
 			children = (
 				1A23710926FA87641AC599CD /* Pods_InAppStoryExample.framework */,
+				31A6B9552B72AB9100873EF8 /* InAppStorySDK.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -365,7 +393,7 @@
 				3196F74A2660DE9000E0DC1A /* Sources */,
 				3196F74B2660DE9000E0DC1A /* Frameworks */,
 				3196F74C2660DE9000E0DC1A /* Resources */,
-				31BD304B28ACE77000DB6788 /* Embed Frameworks */,
+				31A6B9582B72AB9100873EF8 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -463,6 +491,8 @@
 				31C2E5642B67652100CA4300 /* SharingViewController.swift in Sources */,
 				31C08FA427FDBB9200D91DC8 /* MultifeedController.swift in Sources */,
 				311B26992729428F00C25FB4 /* SimpleGoodsController.swift in Sources */,
+				31A6B9432B728F2D00873EF8 /* StackfeedController.swift in Sources */,
+				31A6B9492B72964C00873EF8 /* StackView.swift in Sources */,
 				3196F7522660DE9000E0DC1A /* AppDelegate.swift in Sources */,
 				311B269D2729431100C25FB4 /* CustomCellGoodsController.swift in Sources */,
 				31D5FAB9266512C800CC8BA5 /* MainTableController.swift in Sources */,

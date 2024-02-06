@@ -22,7 +22,8 @@ class MainTableController: UITableViewController {
                     "Simple GoodsWidget",
                     "Custom Cell GoodsWidget",
                     "Custom GoodsWidget",
-                    "Multi-feed"]
+                    "Multi-feed",
+                    "Stack-feed"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -113,6 +114,9 @@ extension MainTableController
             break
         case 14:
             showExample(with: MultifeedController())
+            break
+        case 15:
+            showExample(with: StackfeedController())
             break
         default:
             break

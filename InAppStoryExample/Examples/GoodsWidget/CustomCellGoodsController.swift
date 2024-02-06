@@ -60,7 +60,6 @@ class CustomCellGoodsController: UIViewController {
     
     deinit {
         InAppStory.shared.goodCell = nil
-        InAppStory.shared.goodsDelegateFlowLayout = nil
     }
 }
 
