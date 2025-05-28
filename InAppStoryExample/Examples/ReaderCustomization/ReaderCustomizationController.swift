@@ -141,7 +141,7 @@ extension ReaderCustomizationController {
                                                         favorites: true, /// enable favorite function in reader
                                                         share: true) /// enable share function in reader
         /// set position of close button in reader
-        InAppStory.shared.closeButtonPosition = .bottomLeft
+        InAppStory.shared.closeButtonPosition = .leadingBottom
         /// set animation for switching between stories in the reader
         InAppStory.shared.scrollStyle = .cube
         /// set the animation for the reader

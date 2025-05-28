@@ -151,7 +151,7 @@ extension MainTableController
         InAppStory.shared.placeholderView = nil
         InAppStory.shared.gamePlaceholderView = nil
         
-        InAppStory.shared.closeButtonPosition = .right
+        InAppStory.shared.closeButtonPosition = .trailing
         InAppStory.shared.scrollStyle = .cover
         InAppStory.shared.presentationStyle = .crossDissolve
         

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -45,6 +45,7 @@
 		31D5FAB9266512C800CC8BA5 /* MainTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D5FAB8266512C800CC8BA5 /* MainTableController.swift */; };
 		31D5FABB26651CA500CC8BA5 /* SimpleIntegrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D5FABA26651CA500CC8BA5 /* SimpleIntegrationController.swift */; };
 		31D5FABD266523B700CC8BA5 /* CellCustomizationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D5FABC266523B700CC8BA5 /* CellCustomizationController.swift */; };
+		31D643942DE6F6AE008FCCC8 /* IAMController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D643932DE6F6AE008FCCC8 /* IAMController.swift */; };
 		ACE64286517D13FC382C2B93 /* Pods_InAppStoryExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A23710926FA87641AC599CD /* Pods_InAppStoryExample.framework */; };
 /* End PBXBuildFile section */
 
@@ -104,6 +105,7 @@
 		31D5FAB8266512C800CC8BA5 /* MainTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableController.swift; sourceTree = "<group>"; };
 		31D5FABA26651CA500CC8BA5 /* SimpleIntegrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleIntegrationController.swift; sourceTree = "<group>"; };
 		31D5FABC266523B700CC8BA5 /* CellCustomizationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellCustomizationController.swift; sourceTree = "<group>"; };
+		31D643932DE6F6AE008FCCC8 /* IAMController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAMController.swift; sourceTree = "<group>"; };
 		5F1EAC68C8ED8325B56F10D9 /* Pods-InAppStoryExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InAppStoryExample.release.xcconfig"; path = "Target Support Files/Pods-InAppStoryExample/Pods-InAppStoryExample.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -265,6 +267,7 @@
 				3120AE942808647900659FB1 /* Preloader */,
 				31C08FA227FDB6DA00D91DC8 /* Multifeed */,
 				31A6B9412B728F1A00873EF8 /* Stackfeed */,
+				31D643922DE6F679008FCCC8 /* InAppMessages */,
 			);
 			path = Examples;
 			sourceTree = "<group>";
@@ -359,6 +362,14 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		31D643922DE6F679008FCCC8 /* InAppMessages */ = {
+			isa = PBXGroup;
+			children = (
+				31D643932DE6F6AE008FCCC8 /* IAMController.swift */,
+			);
+			path = InAppMessages;
+			sourceTree = "<group>";
+		};
 		6C94598CE892B759A03EEE36 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -406,7 +417,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1250;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 1620;
 				TargetAttributes = {
 					3196F74D2660DE9000E0DC1A = {
 						CreatedOnToolsVersion = 12.5;
@@ -504,6 +515,7 @@
 				3196F7522660DE9000E0DC1A /* AppDelegate.swift in Sources */,
 				311B269D2729431100C25FB4 /* CustomCellGoodsController.swift in Sources */,
 				31D5FAB9266512C800CC8BA5 /* MainTableController.swift in Sources */,
+				31D643942DE6F6AE008FCCC8 /* IAMController.swift in Sources */,
 				31BFD9592666562300548EE9 /* UserChangeController.swift in Sources */,
 				31BFD94F266655C800548EE9 /* CustomCellController.swift in Sources */,
 				31C2E5612B675B0B00CA4300 /* SharingAction.swift in Sources */,
@@ -675,6 +687,10 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.InAppStory.InAppStoryExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -696,6 +712,10 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.InAppStory.InAppStoryExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

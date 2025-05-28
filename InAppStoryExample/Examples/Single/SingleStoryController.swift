@@ -91,7 +91,7 @@ extension SingleStoryController {
 extension SingleStoryController {
     @objc func buttonAction(sender: UIButton!) {
         /// show singlel story reader with completion
-        InAppStory.shared.showSingle(with: "", from: self) { show in
+        InAppStory.shared.showStory(with: "", from: self) { show in
             print("Story reader \(show ? "is" : "not") showing")
         }
     }

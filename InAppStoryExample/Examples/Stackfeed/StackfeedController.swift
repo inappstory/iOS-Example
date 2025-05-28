@@ -178,6 +178,8 @@ extension StackfeedController {
             print("Onboarding reader will show")
         case .ugcList:
             print("UGC reader will show")
+        @unknown default:
+            print("Unknown reader will show")
         }
     }
     
@@ -204,6 +206,8 @@ extension StackfeedController {
             print("Onboarding reader did close")
         case .ugcList:
             print("UGC reader did close")
+        @unknown default:
+            print("Unknown reader did close")
         }
     }
 }

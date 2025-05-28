@@ -28,3 +28,6 @@ To get started, you need:
 - **CustomGoodsController** - custom GoodsWidget view
 - **MultifeedController** - Multi-feed usage example
 - **PreloaderController** - placeholder (skeleton) example for StoryView
+- **MultifeedController** - displaying multiple feeds on the screenс
+- **StackfeedController** - StackFeed example with View implementation example
+- **IAMController** - example of displaying InAppMessages by id or event
