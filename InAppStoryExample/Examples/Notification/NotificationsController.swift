@@ -28,8 +28,10 @@ class NotificationsController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ///
+        /// creation of observers for screening events via NotificationCenter
         addObservers()
+        /// a more preferred method of tracking notifications from the SDK using closures
+        createNotificationClosure()
         /// Configuring `InAppStory` before use
         setupInAppStory()
         /// Create and add a list of stories to the screen
@@ -140,6 +142,94 @@ extension NotificationsController {
         if notification.userInfo != nil {
             /// display the contents of the notification
             print("Notification UserInfo -> \n\((notification.userInfo as! Dictionary<String, Any>))")
+        }
+    }
+}
+
+extension NotificationsController {
+    func createNotificationClosure() {
+        InAppStory.shared.storiesEvent = {
+            switch $0 {
+            case .storiesLoaded(let feed, let stories):
+                print("StoriesLoaded by \(String(describing: feed)) and count: \(stories.count)")
+            case .ugcStoriesLoaded(let stories):
+                print("UGCStoriesLoaded with count: \(stories.count)")
+            case .clickOnStory(let storyData, let index):
+                print("ClickOnStory at index: \(index)")
+            case .showStory(let storyData, let action):
+                print("ShowStory by action: \(action)")
+            case .closeStory(let slideData, let action):
+                print("CloseStory by action: \(action)")
+            case .clickOnButton(let slideData, let link):
+                print("ClickOnButton with link: \(link)")
+            case .showSlide(let slideData):
+                print("ShowSlide")
+            case .likeStory(let slideData, let value):
+                print("LikeStory with value: \(value)")
+            case .dislikeStory(let slideData, let value):
+                print("DislikeStory with value: \(value)")
+            case .favoriteStory(let slideData, let value):
+                print("FavoriteStory with value: \(value)")
+            case .clickOnShareStory(let slideData):
+                print("ClickOnShareStory")
+            case .storyWidgetEvent(let slideData, let name, let data):
+                print("StoryWidgetEvent with name \(name)")
+            @unknown default:
+                print("default")
+            }
+        }
+        
+        InAppStory.shared.gameEvent = {
+            switch $0 {
+            case .startGame(let gameData):
+                print("StartGame")
+            case .closeGame(let gameData):
+                print("CloseGame")
+            case .finishGame(let gameData, let result):
+                print("FinishGame with result: \(result)")
+            case .eventGame(let gameData, let name, let payload):
+                print("EventGame with name: \(name) and payload: \(payload)")
+            case .gameFailure(let gameData, let message):
+                print("GameFailure with message: \(message)")
+            @unknown default:
+                print("default")
+            }
+        }
+        
+        InAppStory.shared.inAppMessagesEvent = {
+            switch $0 {
+            case .preloaded(let messages):
+                print("IAM Preloaded with messages: \(messages.compactMap { $0.id })")
+            case .show(let iamData):
+                print("IAM Show with id: \(iamData.id ?? "") at campaign name: \(iamData.campaign ?? "")")
+            case .close(let iamData):
+                print("IAM Close with id: \(iamData.id ?? "") at campaign name: \(iamData.campaign ?? "")")
+            case .clickOnButton(let iamData, let link):
+                print("IAM Clisck on button with id: \(iamData.id ?? "") at campaign name: \(iamData.campaign ?? "") with link: \(link)")
+            case .widgetEvent(let iamData, let name, let data):
+                print("IAM Widget event with id: \(iamData.id ?? "") at campaign name: \(iamData.campaign ?? "") with name: \(name)")
+            @unknown default:
+                print("default")
+            }
+        }
+        
+        InAppStory.shared.failureEvent = {
+            switch $0 {
+            case .sessionFailure(let message):
+                print("SessionFailure with maeesage: \(message)")
+            case .storyFailure(let message):
+                print("StoryFailure with maeesage: \(message)")
+            case .currentStoryFailure(let message):
+                print("CurrentStoryFailure with maeesage: \(message)")
+            case .networkFailure(let message):
+                print("NetworkFailure with maeesage: \(message)")
+            case .requestFailure(let message, let statusCode):
+                print("RequestFailure with maeesage: \(message) and code: \(statusCode)")
+            case .inAppMessageFailure(message: let message):
+                print("InAppMessagesFailure with maeesage: \(message)")
+            @unknown default:
+                break
+            }
         }
     }
 }
