@@ -16,6 +16,8 @@
 		3120AE96280864B000659FB1 /* PreloaderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3120AE95280864B000659FB1 /* PreloaderController.swift */; };
 		313961C62B17268C00077A55 /* StoriesClosureHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313961C52B17268C00077A55 /* StoriesClosureHandler.swift */; };
 		3152576E2B07556100089230 /* UIView+CS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3152576D2B07556100089230 /* UIView+CS.swift */; };
+		318ED4332E82B2A0000F89F8 /* IASBannersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318ED4322E82B2A0000F89F8 /* IASBannersController.swift */; };
+		318ED4352E82B836000F89F8 /* DotNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318ED4342E82B836000F89F8 /* DotNavigationView.swift */; };
 		3196F7522660DE9000E0DC1A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3196F7512660DE9000E0DC1A /* AppDelegate.swift */; };
 		3196F75B2660DE9000E0DC1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3196F75A2660DE9000E0DC1A /* Assets.xcassets */; };
 		3196F75E2660DE9000E0DC1A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3196F75C2660DE9000E0DC1A /* LaunchScreen.storyboard */; };
@@ -74,6 +76,8 @@
 		3120AE95280864B000659FB1 /* PreloaderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloaderController.swift; sourceTree = "<group>"; };
 		313961C52B17268C00077A55 /* StoriesClosureHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesClosureHandler.swift; sourceTree = "<group>"; };
 		3152576D2B07556100089230 /* UIView+CS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+CS.swift"; sourceTree = "<group>"; };
+		318ED4322E82B2A0000F89F8 /* IASBannersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IASBannersController.swift; sourceTree = "<group>"; };
+		318ED4342E82B836000F89F8 /* DotNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotNavigationView.swift; sourceTree = "<group>"; };
 		3196F74E2660DE9000E0DC1A /* InAppStoryExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InAppStoryExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3196F7512660DE9000E0DC1A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3196F75A2660DE9000E0DC1A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -148,6 +152,23 @@
 				3120AE95280864B000659FB1 /* PreloaderController.swift */,
 			);
 			path = Preloader;
+			sourceTree = "<group>";
+		};
+		318ED4312E82B281000F89F8 /* IASBanners */ = {
+			isa = PBXGroup;
+			children = (
+				318ED4322E82B2A0000F89F8 /* IASBannersController.swift */,
+				318ED4362E82B83C000F89F8 /* Elements */,
+			);
+			path = IASBanners;
+			sourceTree = "<group>";
+		};
+		318ED4362E82B83C000F89F8 /* Elements */ = {
+			isa = PBXGroup;
+			children = (
+				318ED4342E82B836000F89F8 /* DotNavigationView.swift */,
+			);
+			path = Elements;
 			sourceTree = "<group>";
 		};
 		3196F7452660DE9000E0DC1A = {
@@ -268,6 +289,7 @@
 				31C08FA227FDB6DA00D91DC8 /* Multifeed */,
 				31A6B9412B728F1A00873EF8 /* Stackfeed */,
 				31D643922DE6F679008FCCC8 /* InAppMessages */,
+				318ED4312E82B281000F89F8 /* IASBanners */,
 			);
 			path = Examples;
 			sourceTree = "<group>";
@@ -468,9 +490,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-InAppStoryExample/Pods-InAppStoryExample-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-InAppStoryExample/Pods-InAppStoryExample-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -512,11 +538,13 @@
 				311B26992729428F00C25FB4 /* SimpleGoodsController.swift in Sources */,
 				31A6B9432B728F2D00873EF8 /* StackfeedController.swift in Sources */,
 				31A6B9492B72964C00873EF8 /* StackView.swift in Sources */,
+				318ED4352E82B836000F89F8 /* DotNavigationView.swift in Sources */,
 				3196F7522660DE9000E0DC1A /* AppDelegate.swift in Sources */,
 				311B269D2729431100C25FB4 /* CustomCellGoodsController.swift in Sources */,
 				31D5FAB9266512C800CC8BA5 /* MainTableController.swift in Sources */,
 				31D643942DE6F6AE008FCCC8 /* IAMController.swift in Sources */,
 				31BFD9592666562300548EE9 /* UserChangeController.swift in Sources */,
+				318ED4332E82B2A0000F89F8 /* IASBannersController.swift in Sources */,
 				31BFD94F266655C800548EE9 /* CustomCellController.swift in Sources */,
 				31C2E5612B675B0B00CA4300 /* SharingAction.swift in Sources */,
 				319B6BDB2667778A00589B27 /* CustomStoryCell.swift in Sources */,
