@@ -19,6 +19,10 @@ class IASBannersController: UIViewController {
     fileprivate var bannersHeightConstraint: NSLayoutConstraint!
     /// View for navigating banners using dots
     fileprivate var dotNavigationView: DotNavigationView!
+    /// Button to show the next banner
+    private var nextButton: UIButton!
+    /// Button to show the previous banner
+    private var previousButton: UIButton!
     
     /// Customizing the appearance of the controller
     override func loadView() {
@@ -81,6 +85,7 @@ extension IASBannersController {
         NSLayoutConstraint.activate(allConstraints)
         ///
         setupDotNavigationView()
+        setupNavigationButtons()
         
         /// running internal `bannersView` logic
         bannersView.create()
@@ -95,6 +100,33 @@ extension IASBannersController {
         NSLayoutConstraint.activate([
             dotNavigationView.topAnchor.constraint(equalTo: bannersView.bottomAnchor, constant: 8),
             dotNavigationView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+    }
+    
+    /// Setup navigation buttons under dot navigation view
+    fileprivate func setupNavigationButtons() {
+        previousButton = UIButton(type: .system)
+        previousButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        previousButton.translatesAutoresizingMaskIntoConstraints = false
+        previousButton.addTarget(self, action: #selector(previousButtonTapped), for: .touchUpInside)
+        
+        nextButton = UIButton(type: .system)
+        nextButton.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+        nextButton.translatesAutoresizingMaskIntoConstraints = false
+        nextButton.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
+        
+        let stackView = UIStackView(arrangedSubviews: [previousButton, nextButton])
+        stackView.axis = .horizontal
+        stackView.spacing = 40
+        stackView.alignment = .center
+        stackView.distribution = .equalSpacing
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(stackView)
+        
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: dotNavigationView.bottomAnchor, constant: 8),
+            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
     
@@ -130,5 +162,19 @@ extension IASBannersController {
             
             bannersView.showBannerWith(index: index)
         }
+    }
+}
+
+extension IASBannersController {
+    /// Show the previous banner
+    @objc private func previousButtonTapped() {
+        guard let bannersView else { return }
+        bannersView.showPrevious()
+    }
+    
+    /// Show the next banner
+    @objc private func nextButtonTapped() {
+        guard let bannersView else { return }
+        bannersView.showNext()
     }
 }
