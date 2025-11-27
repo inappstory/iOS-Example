@@ -38,9 +38,6 @@ import InAppStorySDK
 ///
 /// For more information see [Single story](https://docs.inappstory.com/sdk-guides/ios/single-story.html#single-story)
 class SingleStoryController: UIViewController{
-    /// List of stories
-    fileprivate var storyView: StoryView!
-    
     /// Customizing the appearance of the controller
     override func loadView() {
         view = UIView()

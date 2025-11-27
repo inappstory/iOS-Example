@@ -20,6 +20,7 @@ class MainTableController: UITableViewController {
                     "Tags & Placeholders",
                     "Notifications",
                     "Simple GoodsWidget",
+                    "Products widget",
                     "Custom Cell GoodsWidget",
                     "Custom GoodsWidget",
                     "Multi-feed",
@@ -109,21 +110,24 @@ extension MainTableController
             showExample(with: SimpleGoodsController())
             break
         case 12:
-            showExample(with: CustomCellGoodsController())
+            showExample(with: ProductsController())
             break
         case 13:
-            showExample(with: CustomGoodsController())
+            showExample(with: CustomCellGoodsController())
             break
         case 14:
-            showExample(with: MultifeedController())
+            showExample(with: CustomGoodsController())
             break
         case 15:
-            showExample(with: StackfeedController())
+            showExample(with: MultifeedController())
             break
         case 16:
-            showExample(with: IAMController())
+            showExample(with: StackfeedController())
             break
         case 17:
+            showExample(with: IAMController())
+            break
+        case 18:
             showExample(with: IASBannersController())
             break
         default:
